@@ -81,7 +81,7 @@ interface Animal {
 //    }
 //}
 
-interface Operation {
-    void calculate(int a, int b);
-
-}
+//interface Operation {
+//    void calculate(int a, int b);
+//
+//}
