@@ -1,12 +1,12 @@
 import utils2_1_3_1.ImageUtils;
-import utils2_1_3_1.RgbMaster_copy2;
+import utils2_1_3_1.RgbMaster;
 
 import java.awt.image.BufferedImage;
 
 public class Draft_Task2_1_3_0_chast2_Whole_Video {
     public static void main(String[] args) throws Exception {
         final BufferedImage image = ImageUtils.getImage("images2_1_3_1/crab.png");
-        final RgbMaster_copy2 rgbMaster = new RgbMaster_copy2(image);
+        final RgbMaster rgbMaster = new RgbMaster(image);
         rgbMaster.changeImage((float[] rgb) -> {
             final float mean = (rgb[0]+rgb[1]+rgb[2])/3;
             rgb[0] = mean;
