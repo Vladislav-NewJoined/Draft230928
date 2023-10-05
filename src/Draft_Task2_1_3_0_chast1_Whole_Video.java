@@ -10,7 +10,7 @@ public class Draft_Task2_1_3_0_chast1_Whole_Video {
         final int height = image.getHeight();
         final int width = image.getWidth();
 //        image.getAlphaRaster() != null;
-        final int[] rgbArray = image.getRGB(0, 0, width, height, null, 0, height*width);
+//        final int[] rgbArray = image.getRGB(0, 0, width, height, null, 0, height*width);
         // (int startX, int startY, int w, int h,
         //                        int[] rgbArray, int offset, int scansize)
     }
