@@ -26,7 +26,7 @@ public class Draft_Task2_1_5_1 {
 
         System.out.println(); // Это перенос строки
         System.out.println("Полученный массив: ");
-        catalog.stream().skip(1).limit(2).forEach(a -> System.out.println(a));
+//        catalog.stream().skip(1).limit(2).forEach(a -> System.out.println(a));
+        catalog.stream().skip(1).limit(2).forEach(System.out::println);
     }
-
 }
