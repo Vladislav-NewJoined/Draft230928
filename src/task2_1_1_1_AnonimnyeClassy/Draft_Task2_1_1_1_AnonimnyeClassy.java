@@ -1,4 +1,4 @@
-// закончил на мин 07 30
+package task2_1_1_1_AnonimnyeClassy;// закончил на мин 07 30
 
 public class Draft_Task2_1_1_1_AnonimnyeClassy {
     public static void main(String[] args) {

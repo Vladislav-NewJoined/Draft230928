@@ -1,17 +1,18 @@
-package task2_1_3_1_StreamAPI;
+package task2_1_2_1_copy2_ObrabotkaFoto;
 
-import task2_1_3_1_StreamAPI.utils2_1_3_1.ImageUtils;
-import task2_1_3_1_StreamAPI.utils2_1_3_1.RgbMaster;
+import task2_1_2_1_copy2_ObrabotkaFoto.utils2_1_3_1.ImageUtils;
+import task2_1_2_1_copy2_ObrabotkaFoto.utils2_1_3_1.RgbMaster;
+import task2_1_3_1_StreamAPI.FilterOperation;
 
 import java.awt.image.BufferedImage;
 
 public class Draft_Task2_1_3_0_chast3_Whole_Video {
     public static void main(String[] args) throws Exception {
-        final BufferedImage image = ImageUtils.getImage("2_1_3_0images/crab.png");
+        final BufferedImage image = ImageUtils.getImage("task2_1_2_1_images/crab.png");
         final RgbMaster rgbMaster = new RgbMaster(image);
         rgbMaster.changeImage(FilterOperation::/*greyScale *//**//**//**//*onlyRed*//**//* onlyGreen *//*
                 onlyBlue */sepia);
-        ImageUtils.saveImage(rgbMaster.getImage(), "2_1_3_0images/cloned_crab.png");
+        ImageUtils.saveImage(rgbMaster.getImage(), "task2_1_2_1_images/cloned_crab.png");
 
     }
 }

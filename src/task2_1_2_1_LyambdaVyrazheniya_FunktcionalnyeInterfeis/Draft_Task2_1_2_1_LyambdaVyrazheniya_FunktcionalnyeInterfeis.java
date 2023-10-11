@@ -1,6 +1,8 @@
+package task2_1_2_1_LyambdaVyrazheniya_FunktcionalnyeInterfeis;
+
 import java.util.function.Function;
 
-public class Draft_Task2_1_2_1_LyambdaVyrazheniya_FunktcionalnyeInterfeisy_copy2_fromGitHub {
+public class Draft_Task2_1_2_1_LyambdaVyrazheniya_FunktcionalnyeInterfeis {
     public static void main(String[] args) {
         System.out.println("""
                 Задание для Урока 2. Лямбда-выражения, функциональные интерфейсы:\s

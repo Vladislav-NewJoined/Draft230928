@@ -1,14 +1,14 @@
-package task2_1_3_1_StreamAPI;
+package task2_1_2_1_copy2_ObrabotkaFoto;
 
-import task2_1_3_1_StreamAPI.utils2_1_3_1.ImageUtils;
+import task2_1_2_1_copy2_ObrabotkaFoto.utils2_1_3_1.ImageUtils;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class Draft_Task2_1_3_0_chast1_Whole_Video {
     public static void main(String[] args) throws IOException {
-        final BufferedImage image = ImageUtils.getImage("2_1_3_0images/crab.png");
-        ImageUtils.saveImage(image, "2_1_3_0images/cloned_crab.png");
+        final BufferedImage image = ImageUtils.getImage("task2_1_2_1_images/crab.png");
+        ImageUtils.saveImage(image, "task2_1_2_1_images/cloned_crab.png");
         final int height = image.getHeight();
         final int width = image.getWidth();
 //        image.getAlphaRaster() != null;

@@ -1,3 +1,5 @@
+package task2_1_2_1_copy2_ObrabotkaFoto;
+
 import java.util.Random;
 
 public class FilterOperation {

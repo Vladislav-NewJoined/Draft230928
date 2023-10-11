@@ -1,3 +1,5 @@
+package task2_1_1_1_AnonimnyeClassy;
+
 public class Draft_Task2_1_1_0_Whole_Video {
 
     static int catSayCounter = 0;
@@ -53,7 +55,7 @@ public class Draft_Task2_1_1_0_Whole_Video {
 
 
 
-//class Animal {
+//class task2_1_2_1_LyambdaVyrazheniya_FunktcionalnyeInterfeis.Animal {
 //    public void say() {
 //        System.out.println("something say");
 //    }
@@ -63,19 +65,19 @@ interface Animal {
     void say();
 }
 
-//class Cat extends Animal {
+//class Cat extends task2_1_2_1_LyambdaVyrazheniya_FunktcionalnyeInterfeis.Animal {
 //    public void say() {
 //        System.out.println("mew");
 //    }
 //}
 //
-//class Dog extends Animal {
+//class Dog extends task2_1_2_1_LyambdaVyrazheniya_FunktcionalnyeInterfeis.Animal {
 //    public void say() {
 //        System.out.println("gav");
 //    }
 //}
 //
-//class Duck extends Animal {
+//class Duck extends task2_1_2_1_LyambdaVyrazheniya_FunktcionalnyeInterfeis.Animal {
 //    public void say()     {
 //        System.out.println("krya");
 //    }
