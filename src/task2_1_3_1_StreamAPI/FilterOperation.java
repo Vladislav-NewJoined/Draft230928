@@ -1,4 +1,4 @@
-package task2_1_3;
+package task2_1_3_1_StreamAPI;
 
 import java.util.Random;
 

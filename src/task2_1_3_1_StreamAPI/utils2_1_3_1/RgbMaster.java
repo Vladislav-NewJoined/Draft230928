@@ -1,7 +1,7 @@
-package task2_1_3.utils2_1_3_1;
+package task2_1_3_1_StreamAPI.utils2_1_3_1;
 // лямбда начинается на мин 10 43
 
-import task2_1_3.functions.ImageOperation;
+import task2_1_3_1_StreamAPI.functions.ImageOperation;
 
 import java.awt.image.BufferedImage;
 

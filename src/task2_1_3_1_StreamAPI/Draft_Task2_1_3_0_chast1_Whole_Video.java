@@ -1,6 +1,6 @@
-package task2_1_3;
+package task2_1_3_1_StreamAPI;
 
-import task2_1_3.utils2_1_3_1.ImageUtils;
+import task2_1_3_1_StreamAPI.utils2_1_3_1.ImageUtils;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
