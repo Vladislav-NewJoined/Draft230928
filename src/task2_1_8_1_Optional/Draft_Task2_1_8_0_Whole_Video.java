@@ -22,7 +22,7 @@ public class Draft_Task2_1_8_0_Whole_Video {
 //        System.out.println(value.orElse(-1));
 //        System.out.println(value.orElseGet((() -> -1)));  // для домашки
 //        System.out.println(value.orElseGet((() -> GetIfNaN())));  // для домашки
-//        System.out.println(value.orElseGet((Draft_Task2_1_8_0_Whole_Video::GetIfNaN)));  // для домашки
+//        System.out.println(value.orElseGet((Draft_Task2_1_9_0_Whole_Video::GetIfNaN)));  // для домашки
 
 
 //        ArrayList<Integer> numbers = new ArrayList<>();
