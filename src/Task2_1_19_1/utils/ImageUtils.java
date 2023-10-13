@@ -1,4 +1,4 @@
-package task2_1_2_1_copy2_ObrabotkaFoto.utils2_1_3_1;
+package Task2_1_19_1.utils;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
