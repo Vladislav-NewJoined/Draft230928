@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 // источник: Углубленный синтаксис Java/Тема 1. Stream Api. Функциональное программирование
 // в Java/Урок 10. Перебор и группировка (map)
-public class Task2_1_20_1_copy3 {
+public class Task2_1_20_1_copy4 {
     public static void main(String[] args) {
         System.out.println("""
                 Задание:\s
@@ -83,16 +83,20 @@ public class Task2_1_20_1_copy3 {
         System.out.println("\nРЕАЛИЗУЕМ НАВИГАЦИОННОЕ МЕНЮ, СОСОЯЩЕЕ ИЗ РАЗДЕЛОВ:");
         System.out.println("КАТАЛОГ:");
 // Берем отсюда: Урок 10. Перебор и группировка (map) (на листке: Урок 6. Перебор и группировка (map))
-        catalog.stream().map((product -> product.name)).forEach(x -> System.out.println(x.toUpperCase()));
+//        catalog.stream().map((product -> product.name)).forEach(x -> System.out.println(x.toUpperCase()));
+
+        catalog.stream().map((product -> "Название: " + product.name + ", " + "Цена: " +
+                product.price + ", " + "Наличие на складе: " + product.availabilityInStock + ".")).forEach(System.out::println);
+
     }
 }
 
-class Product3 {
+class Product4 {
     String name;
     int price;
     int availabilityInStock;
 
-    public Product3(String name, int price, int availabilityInStock) {
+    public Product4(String name, int price, int availabilityInStock) {
         this.name = name;
         this.price = price;
         this.availabilityInStock = availabilityInStock;
