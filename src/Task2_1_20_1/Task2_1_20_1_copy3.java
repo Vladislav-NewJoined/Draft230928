@@ -45,11 +45,11 @@ public class Task2_1_20_1_copy3 {
         // Объявляем каталог Доступность на складе
         System.out.println("Каталог ДОСТУПНОСТЬ НА СКЛАДЕ: ");
         catalog.stream().map((product3 -> product3.availabilityInStock)).forEach(z -> System.out.println(z));
-        System.out.println();
 
 //        Arrays IntStream;
 //        IntStream.stream().map((product3 -> product3.availabilityInStock)).forEach(System.out::println);
 
+        System.out.println("\nГруппируем разными способами:");
 // Способ 1
         System.out.println("\nСпособ 1");
         Map<Integer, List<Product3>> groupedProduct3 = catalog.stream().collect(Collectors.groupingBy(Product3::getPrice));
