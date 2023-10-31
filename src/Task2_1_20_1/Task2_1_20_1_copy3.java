@@ -1,7 +1,5 @@
 package Task2_1_20_1;
 
-//import task2_1_9_1_Collect.Student;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -49,9 +47,9 @@ public class Task2_1_20_1_copy3 {
 //        Arrays IntStream;
 //        IntStream.stream().map((product3 -> product3.availabilityInStock)).forEach(System.out::println);
 
-        System.out.println("\nГруппируем разными способами:");
+        System.out.println("\nГРУППИРУЕМ РАЗНЫМИ СПОСОБАМИ:");
 // Способ 1
-        System.out.println("\nСпособ 1");
+        System.out.println("Способ 1");
         Map<Integer, List<Product3>> groupedProduct3 = catalog.stream().collect(Collectors.groupingBy(Product3::getPrice));
         for (int price : groupedProduct3.keySet()) {
             System.out.print("Цена " + price + ": ");
@@ -81,6 +79,12 @@ public class Task2_1_20_1_copy3 {
 //        Map<Integer, List<Student>> groupedStudents = studentStream.collect(Collectors.counting());
         System.out.println("Количество единиц на складе для товаров, имеющие такую-то цену: " + catalogStream4.collect(Collectors.groupingBy(Product3::getPrice, Collectors.summingInt(Product3::getAvailabilityInStock))));
 // Способ 4 конец
+
+        System.out.println("\nРЕАЛИЗУЕМ НАВИГАЦИОННОЕ МЕНЮ, СОСОЯЩЕЕ ИЗ РАЗДЕЛОВ:");
+        System.out.println("КАТАЛОГ:");
+// Берем отсюда: Урок 10. Перебор и группировка (map) (на листке: Урок 6. Перебор и группировка (map))
+        catalog.stream().map((product -> product.name)).forEach(x -> System.out.println(x.toUpperCase()));
+
 
     }
 }
