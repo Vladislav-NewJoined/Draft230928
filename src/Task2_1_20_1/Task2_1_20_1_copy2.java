@@ -1,7 +1,10 @@
 package Task2_1_20_1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
+// источник: Углубленный синтаксис Java/Тема 1. Stream Api. Функциональное программирование
+// в Java/Урок 10. Перебор и группировка (map)
 public class Task2_1_20_1_copy2 {
     public static void main(String[] args) {
         System.out.println("""
@@ -39,6 +42,10 @@ public class Task2_1_20_1_copy2 {
         System.out.println("Каталог ДОСТУПНОСТЬ НА СКЛАДЕ: ");
         catalog.stream().map((product2 -> product2.availabilityInStock)).forEach(z -> System.out.println(z));
         System.out.println();
+
+//        Arrays IntStream;
+//        IntStream.stream().map((product2 -> product2.availabilityInStock)).forEach(System.out::println);
+
 
     }
 }

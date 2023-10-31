@@ -17,56 +17,56 @@ public class Draft_Task2_1_9_0_Whole_Video {
                     Задание: Создайте поток каждым из предложенных в данном уроке способов.
 
                 Решение:\s""");
-        ArrayList<Student> students = new ArrayList<>();
-        students.add(new Student("Sasha", 4, 180));
-        students.add(new Student("Zhenya", 5, 170));
-        students.add(new Student("Vanya", 3, 180));
-        students.add(new Student("Misha", 4, 190));
-        students.add(new Student("Petya", 5, 170));
-        students.add(new Student("Michael", 5, 160));
-//        System.out.println(students.stream().collect(Collectors.groupingBy(Student::getGrade)));
+        ArrayList<Product3> product3s = new ArrayList<>();
+        product3s.add(new Product3("Sasha", 4, 180));
+        product3s.add(new Product3("Zhenya", 5, 170));
+        product3s.add(new Product3("Vanya", 3, 180));
+        product3s.add(new Product3("Misha", 4, 190));
+        product3s.add(new Product3("Petya", 5, 170));
+        product3s.add(new Product3("Michael", 5, 160));
+//        System.out.println(product3s.stream().collect(Collectors.groupingBy(Product3::getGrade)));
 
 //// Способ 1
-//        Map<Integer, List<Student>> groupedStudents = students.stream().collect(Collectors.groupingBy(Student::getGrade));
+//        Map<Integer, List<Product3>> groupedStudents = product3s.stream().collect(Collectors.groupingBy(Product3::getGrade));
 //        for (int grade : groupedStudents.keySet()) {
 //            System.out.println("Получили " + grade + ":");
-//            for (Student student : groupedStudents.get(grade)) {
+//            for (Product3 student : groupedStudents.get(grade)) {
 //                System.out.println(student.name);
 //            }
 //        }
 //// Способ 1 конец
 
 //// Способ 2
-//        Stream<Student> studentStream = students.stream();
-////        Map<Integer, List<Student>> groupedStudents = studentStream.collect(Collectors.counting());
+//        Stream<Product3> studentStream = product3s.stream();
+////        Map<Integer, List<Product3>> groupedStudents = studentStream.collect(Collectors.counting());
 //        System.out.println("Количество студентов: " + studentStream.collect(Collectors.counting()));
 //// Способ 2 конец
 
 //// Способ 3
 //        System.out.println("Способ 3");
-//       Stream<Student> studentStream = students.stream();
-////        Map<Integer, List<Student>> groupedStudents = studentStream.collect(Collectors.counting());
-//        System.out.println("Количество студентов, имеющих соответствующий возраст: " + studentStream.collect(Collectors.groupingBy(Student::getGrade, Collectors.counting())));
+//       Stream<Product3> studentStream = product3s.stream();
+////        Map<Integer, List<Product3>> groupedStudents = studentStream.collect(Collectors.counting());
+//        System.out.println("Количество студентов, имеющих соответствующий возраст: " + studentStream.collect(Collectors.groupingBy(Product3::getGrade, Collectors.counting())));
 //        System.out.println(); // перенос строки
 //// Способ 3 конец
 
 // Способ 4
         System.out.println("Способ 4");
-       Stream<Student> studentStream4 = students.stream();
-//        Map<Integer, List<Student>> groupedStudents = studentStream.collect(Collectors.counting());
-        System.out.println("Количество студентов, имеющих соответствующий возраст: " + studentStream4.collect(Collectors.groupingBy(Student::getGrade, Collectors.summingInt(Student::getHeight))));
+       Stream<Product3> studentStream4 = product3s.stream();
+//        Map<Integer, List<Product3>> groupedStudents = studentStream.collect(Collectors.counting());
+        System.out.println("Количество студентов, имеющих соответствующий возраст: " + studentStream4.collect(Collectors.groupingBy(Product3::getGrade, Collectors.summingInt(Product3::getHeight))));
         System.out.println(); // перенос строки
 // Способ 4 конец
 
     }
 }
 
-class Student {
+class Product3 {
     String name;
     int grade;
     int height;
 
-    public Student(String name, int grade, int height) {
+    public Product3(String name, int grade, int height) {
         this.name = name;
         this.grade = grade;
         this.height = height;
