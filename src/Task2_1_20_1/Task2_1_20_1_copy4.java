@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 // источник: Углубленный синтаксис Java/Тема 1. Stream Api. Функциональное программирование
@@ -32,29 +33,29 @@ public class Task2_1_20_1_copy4 {
 
         // Объявляем каталог Имя
         System.out.println("\nКаталог НАИМЕНОВАНИЕ: ");
-        catalog.stream().map((product3 -> product3.name)).forEach(x -> System.out.println(x));
+        catalog.stream().map((product4 -> product4.name)).forEach(x -> System.out.println(x));
         System.out.println();
 
         // Объявляем каталог Цена
         System.out.println("Каталог ЦЕНА: ");
-        catalog.stream().map((product3 -> product3.price)).forEach(y -> System.out.println(y));
+        catalog.stream().map((product4 -> product4.price)).forEach(y -> System.out.println(y));
         System.out.println();
 
         // Объявляем каталог Доступность на складе
         System.out.println("Каталог ДОСТУПНОСТЬ НА СКЛАДЕ: ");
-        catalog.stream().map((product3 -> product3.availabilityInStock)).forEach(z -> System.out.println(z));
+        catalog.stream().map((product4 -> product4.availabilityInStock)).forEach(z -> System.out.println(z));
 
 //        Arrays IntStream;
-//        IntStream.stream().map((product3 -> product3.availabilityInStock)).forEach(System.out::println);
+//        IntStream.stream().map((product4 -> product4.availabilityInStock)).forEach(System.out::println);
 
         System.out.println("\nГРУППИРУЕМ РАЗНЫМИ СПОСОБАМИ:");
 // Способ 1
         System.out.println("Способ 1");
-        Map<Integer, List<Product4>> groupedProduct3 = catalog.stream().collect(Collectors.groupingBy(Product4::getPrice));
-        for (int price : groupedProduct3.keySet()) {
+        Map<Integer, List<Product4>> groupedProduct4 = catalog.stream().collect(Collectors.groupingBy(Product4::getPrice));
+        for (int price : groupedProduct4.keySet()) {
             System.out.print("Цена " + price + ": ");
-            for (Product4 product3 : groupedProduct3.get(price)) {
-                System.out.println(product3.name);
+            for (Product4 product4 : groupedProduct4.get(price)) {
+                System.out.println(product4.name);
             }
         }
 // Способ 1 конец
@@ -86,7 +87,29 @@ public class Task2_1_20_1_copy4 {
 //        catalog.stream().map((product -> product.name)).forEach(x -> System.out.println(x.toUpperCase()));
 
         catalog.stream().map((product -> "Название: " + product.name + ", " + "Цена: " +
-                product.price + ", " + "Наличие на складе: " + product.availabilityInStock + ".")).forEach(System.out::println);
+                product.price + ", " + "Наличие на складе: " + product.availabilityInStock + ".")).
+                forEach(System.out::println);
+
+        System.out.println();
+        System.out.println("КОРЗИНА:");
+// Берем отсюда: Урок 10. Перебор и группировка (map) (на листке: Урок 6. Перебор и группировка (map))
+//        catalog.stream().map((product -> product.name)).forEach(x -> System.out.println(x.toUpperCase()));
+
+//        catalog.stream().map((product -> "Название: " + product.name + ", " + "Цена: " +
+//                product.price + ", " + "Наличие на складе: " + product.availabilityInStock + ".")).forEach(System.out::println);
+
+        catalog.stream().map((product -> product.price == 30000));
+
+        catalog.stream().map((product -> "Название: " + product.name + ", " + "Цена: " +
+                product.price + ", " + "Наличие на складе: " + product.availabilityInStock + ".")).
+                forEach(System.out::println);
+
+
+
+//                "Название: " + filterProduct.name + ", " + "Цена: " +
+//                filterProduct.price + ", " + "Наличие на складе: " + filterProduct.availabilityInStock + ".")).forEach(System.out::println);
+
+//        catalog.stream().filter((a) -> name > 0);
 
     }
 }
