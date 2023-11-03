@@ -31,7 +31,7 @@ public class Task2_1_20_1_copy4 {
         catalog.add(new Product4("Google Pixel 10a", 30000, 4));
         System.out.println(catalog.stream().collect(Collectors.groupingBy(Product4::getPrice)));
 
-        // Объявляем каталог Имя
+        // Объявляем каталог Название
         System.out.println("\nКаталог НАИМЕНОВАНИЕ: ");
         catalog.stream().map((product4 -> product4.name)).forEach(x -> System.out.println(x));
         System.out.println();
@@ -65,15 +65,13 @@ public class Task2_1_20_1_copy4 {
         Stream<Product4> catalogStream2 = catalog.stream();
 //        Map<Integer, List<Student>> groupedStudents = catalogStream2.collect(Collectors.counting());
         System.out.println("Количество наименований товаров: " + catalogStream2.collect(Collectors.counting()));
-//        System.out.println("Количество наименований товаров: " + (Long) catalogStream2.count());
 // Способ 2 конец
 
 // Способ 3
         System.out.println("\nСпособ 3");
         Stream<Product4> catalogStream3 = catalog.stream();
 //        Map<Integer, List<Student>> groupedStudents = catalogStream3.collect(Collectors.counting());
-        System.out.println("Количество товаров, имеющие такую-то цену: " +
-                catalogStream3.collect(Collectors.groupingBy(Product4::getPrice, Collectors.counting())));
+        System.out.println("Количество товаров, имеющие такую-то цену: " + catalogStream3.collect(Collectors.groupingBy(Product4::getPrice, Collectors.counting())));
 // Способ 3 конец
 
 // Способ 4
@@ -89,7 +87,7 @@ public class Task2_1_20_1_copy4 {
 //        catalog.stream().map((product -> product.name)).forEach(x -> System.out.println(x.toUpperCase()));
 
         catalog.stream().map((product -> "Название: " + product.name + ", " + "Цена: " +
-                product.price + ", " + "Наличие на складе: " + product.availabilityInStock + ".")).
+                        product.price + ", " + "Наличие на складе: " + product.availabilityInStock + ".")).
                 forEach(System.out::println);
 
         System.out.println();
@@ -103,7 +101,7 @@ public class Task2_1_20_1_copy4 {
         catalog.stream().map((product -> product.price == 30000));
 
         catalog.stream().map((product -> "Название: " + product.name + ", " + "Цена: " +
-                product.price + ", " + "Наличие на складе: " + product.availabilityInStock + ".")).
+                        product.price + ", " + "Наличие на складе: " + product.availabilityInStock + ".")).
                 forEach(System.out::println);
 
 
