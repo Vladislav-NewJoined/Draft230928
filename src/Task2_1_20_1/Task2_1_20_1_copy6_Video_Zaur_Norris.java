@@ -75,6 +75,12 @@ class Test2 {
     }
 }
 
+// источник: https://www.youtube.com/watch?v=Fn02Fd548UY&list=PLqj7-hRTFl_oDMBjI_EstsFcDAwt-Arhs&index=55
+// Streams. Метод collect: grouping и partitioning (прокачанная Java)_Заур Трегулов
+class Test4 {
+
+}
+
 class Student {
     private String name;
     private char sex;
