@@ -63,21 +63,23 @@ public class Task2_1_20_1_copy4 {
 // Способ 2
         System.out.println("\nСпособ 2");
         Stream<Product4> catalogStream2 = catalog.stream();
-//        Map<Integer, List<Student>> groupedStudents = studentStream.collect(Collectors.counting());
+//        Map<Integer, List<Student>> groupedStudents = catalogStream2.collect(Collectors.counting());
         System.out.println("Количество наименований товаров: " + catalogStream2.collect(Collectors.counting()));
+//        System.out.println("Количество наименований товаров: " + (Long) catalogStream2.count());
 // Способ 2 конец
 
 // Способ 3
         System.out.println("\nСпособ 3");
-        Stream<Product4> studentStream = catalog.stream();
-//        Map<Integer, List<Student>> groupedStudents = studentStream.collect(Collectors.counting());
-        System.out.println("Количество товаров, имеющие такую-то цену: " + studentStream.collect(Collectors.groupingBy(Product4::getPrice, Collectors.counting())));
+        Stream<Product4> catalogStream3 = catalog.stream();
+//        Map<Integer, List<Student>> groupedStudents = catalogStream3.collect(Collectors.counting());
+        System.out.println("Количество товаров, имеющие такую-то цену: " +
+                catalogStream3.collect(Collectors.groupingBy(Product4::getPrice, Collectors.counting())));
 // Способ 3 конец
 
 // Способ 4
         System.out.println("\nСпособ 4");
         Stream<Product4> catalogStream4 = catalog.stream();
-//        Map<Integer, List<Student>> groupedStudents = studentStream.collect(Collectors.counting());
+//        Map<Integer, List<Student>> groupedStudents = catalogStream4.collect(Collectors.counting());
         System.out.println("Количество единиц на складе для товаров, имеющие такую-то цену: " + catalogStream4.collect(Collectors.groupingBy(Product4::getPrice, Collectors.summingInt(Product4::getAvailabilityInStock))));
 // Способ 4 конец
 
@@ -133,5 +135,3 @@ class Product4 {
         return this.availabilityInStock;
     }
 }
-
-

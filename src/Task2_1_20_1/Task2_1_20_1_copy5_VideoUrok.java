@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 
 // Как распечатать объект Java без получения "SomeType@2f92e0f4"? https://kzen.dev/ru/60738586?ysclid=loh2rrv5bm45130889
-public class Task2_1_20_1_copy5_Prosmatrivaem {
+public class Task2_1_20_1_copy5_VideoUrok {
     // Урок 7. Введение в StreamApi, создание потока данных -
 
     public static void main(String[] args) {
