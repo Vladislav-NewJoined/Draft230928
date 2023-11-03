@@ -1,15 +1,45 @@
 package Task2_1_20_1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
-// источник: https://www.youtube.com/playlist?list=PLqj7-hRTFl_oDMBjI_EstsFcDAwt-Arhs  - Заур Трегулов
+// источник: https://www.youtube.com/playlist?list=PLqj7-hRTFl_oDMBjI_EstsFcDAwt-Arhs _ Заур Трегулов
 public class Task2_1_20_1_copy6_Video_Zaur_Norris {
 
 }
 
-// Streams. Метод filter (прокачанная Java)  https://youtu.be/C7uDcRGiwg8
+// источник: https://youtu.be/oTdm_CVIdJM Введение в Streams. Метод map (прокачанная Java) _ Заур Трегулов
+// делится на 3: мин 10 12
+class Test1 {
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<>();
+        list.add("privet");
+        list.add("kak dela?");
+        list.add("OK");
+        list.add("poka");
+
+//            // 6 9 2 4
+//            List<Integer> list2 = list.stream().map(element -> element.length())
+//                    .collect(Collectors.toList());
+//            System.out.println(list2);
+
+        int[] array = {5, 9, 3, 8, 1};
+        array = Arrays.stream(array).map(element
+                -> {
+            if (element % 3 == 0) {
+                element = element / 3;
+            }
+            return element;
+        }).toArray();
+
+        System.out.println(Arrays.toString(array));
+
+    }
+}
+
+
+// источник: https://youtu.be/C7uDcRGiwg8 Streams. Метод filter (прокачанная Java) _ Заур Трегулов
 // Метод filter: мин 1 25
 class Test2 {
     public static void main(String[] args) {
@@ -40,7 +70,7 @@ class Test2 {
 //                .forEach(System.out::println);
 
         students.stream().filter(element
-                        ->element.getAge() > 22 && element.getAvgGrade() < 7.2)
+                        -> element.getAge() > 22 && element.getAvgGrade() < 7.2)
                 .toList().forEach(System.out::println);
     }
 }

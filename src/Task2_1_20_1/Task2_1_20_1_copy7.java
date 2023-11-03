@@ -69,6 +69,11 @@ class Test3 {
                 /* && element.getAvgGrade() < 7.2*/)
                 .toList().forEach(System.out::println);  // todo
 
+        catalog.stream().filter(element
+                                -> Objects.equals(element.getName(), "Samsung Galaxy S100")
+                        /* && element.getAvgGrade() < 7.2*/);  // todo
+
+
     }
 }
 
