@@ -29,14 +29,21 @@ class Test5 {
 //                .toList().forEach(System.out::println);
 //        System.out.println(students); // печатает изначальный массив
 
-//        List<Student2> newStudents = students.stream().map(person -> {
-//            return person;
+//        List<String> newStudents = students.stream().map(person -> {
+//            return "Hello";
 //        }).toList();
 //        System.out.println(newStudents);
 
-        students.stream().map(person -> {
-            return person;
-        }).toList().forEach(System.out::println);
+//        students.stream().map(person -> {
+//            return "Hello";
+//        }).toList().forEach(System.out::println);
+
+//        students.stream().map(person -> {
+//            return person;
+//        }).toList().forEach(System.out::println);
+
+        students.stream().map(person -> person.getAge()*3).toList().forEach(System.out::println); //
+        // https://www.youtube.com/watch?v=nEabP9CYCAQ Владилен Минин _ мин 8 58
 
 
 
