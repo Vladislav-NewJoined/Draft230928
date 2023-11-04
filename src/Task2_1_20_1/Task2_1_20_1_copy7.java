@@ -3,6 +3,7 @@ package Task2_1_20_1;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 // источник: https://www.youtube.com/playlist?list=PLqj7-hRTFl_oDMBjI_EstsFcDAwt-Arhs  - Заур Трегулов
 public class Task2_1_20_1_copy7 {
@@ -29,7 +30,7 @@ class Test3 {
         Products prod1 = new Products("Nokia 3310", 12345, 4, 0);
         Products prod2 = new Products("Samsung Galaxy S100", 30000, 7, 0);
         Products prod3 = new Products("IPhone 20", 392049, 1, 0);
-        Products prod4 = new Products("Google Pixel 10a", 30000, 4, 0);
+        Products prod4 = new Products("Google Pixel 10a", 30000, 0, 0);
         List<Products> catalog = new ArrayList<>();
         catalog.add(prod1);
         catalog.add(prod2);
@@ -52,27 +53,41 @@ class Test3 {
         System.out.println("\nСписок: КОЛ-ВО ЗАКАЗАНО: ");
         catalog.stream().map((product -> product.getQtyOrdered())).forEach(System.out::println);
 
-        System.out.println("\nРЕАЛИЗУЕМ НАВИГАЦИОННОЕ МЕНЮ, СОСОЯЩЕЕ ИЗ РАЗДЕЛОВ:");
-        System.out.println("ПОЛНЫЙ КАТАЛОГ:");
-        catalog.stream().forEach(System.out::println);
-//        catalog.forEach(System.out::println);
+        // Сортируем по цене
+        System.out.println("\nСОРТИРУЕМ КАТАЛОГ ПО ЦЕНЕ:");
+        catalog.stream().sorted().map((product -> "Наименование: " + product.getName() + ", " + "Цена: " +
+                        product.getPrice() + ", " + "Кол-во ед. в наличии на складе: " + product.getQtyInStock()
+                        + "."))
+                        .forEach(System.out::println);
         System.out.println();
 
-//        System.out.println("КОРЗИНА:");
-//        catalog.stream().filter(element
-//                ->element.getPrice() > 29000/* && element.getAvgGrade() < 7.2*/)
-//                .toList().forEach(System.out::println);
 
-        System.out.println("КОРЗИНА:");
+        System.out.println("\nРЕАЛИЗУЕМ НАВИГАЦИОННОЕ МЕНЮ, СОСОЯЩЕЕ ИЗ РАЗДЕЛОВ:");
+        System.out.println("ПОЛНЫЙ КАТАЛОГ:");
+        catalog.stream().map((product -> "Наименование: " + product.getName() + ", " + "Цена: " +
+                        product.getPrice() + ", " + "Кол-во ед. в наличии на складе: " + product.getQtyInStock() /*+ ", " + "Кол-во заказано: " +
+                        product.getQtyOrdered() */+ "."))
+                        .forEach(System.out::println);
+        System.out.println();
+
+        System.out.println("КОРЗИНА: \n(Выбрано: Samsung Galaxy S100 - 2 шт.)");
         catalog.stream().filter(element
-                -> Objects.equals(element.getName(), "Samsung Galaxy S100")
-                /* && element.getAvgGrade() < 7.2*/)
-                .toList().forEach(System.out::println);  // todo
+                -> Objects.equals(element.getName(), "Samsung Galaxy S100"))
+                        .map((product -> "Наименование: " + product.getName() + ", " + "Цена: " +
+                        product.getPrice() /*+ ", " + "Кол-во ед. в наличии на складе: " + product.getQtyInStock() */+ ", " + "Кол-во заказано: " +
+                        (product.getQtyOrdered()+2) + "."))
+                        .forEach(System.out::println);
+        System.out.println();
 
+        System.out.println("ОФОРМЛЕНИЕ ЗАКАЗА:");
         catalog.stream().filter(element
-                                -> Objects.equals(element.getName(), "Samsung Galaxy S100")
-                        /* && element.getAvgGrade() < 7.2*/);  // todo
-
+                -> Objects.equals(element.getName(), "Samsung Galaxy S100"))
+                        .map((product -> "Наименование: " + product.getName() + ", " + "Цена: " +
+                        product.getPrice() /*+ ", " + "Кол-во ед. в наличии на складе: " + product.getQtyInStock() */+ ", " + "Кол-во заказано: " +
+                        (product.getQtyOrdered()+2) + ", " +  "Итого сумма к оплате: " +
+                        product.getPrice()*2 + " руб."))
+                        .forEach(System.out::println);
+        System.out.println();
 
     }
 }
@@ -90,13 +105,13 @@ class Products {
         this.setQtyOrdered(qtyOrdered);
     }
 
-    @Override
-    public String toString() {
-        return "Наименование: '" + getName() + '\'' +
-                ", Цена: " + getPrice() +
-                ", Кол-во в наличии на складе: " + getQtyInStock() +
-                ", Кол-во заказано: " + getQtyOrdered();
-    }
+//    @Override
+//    public String toString() {
+//        return "Наименование: '" + getName() + '\'' +
+//                ", Цена: " + getPrice() +
+//                ", Кол-во в наличии на складе: " + getQtyInStock() +
+//                ", Кол-во заказано: " + getQtyOrdered();
+//    }
 
     public String getName() {
         return name;
@@ -121,6 +136,7 @@ class Products {
     public void setQtyInStock(int qtyInStock) {
         this.qtyInStock = qtyInStock;
     }
+
     public int getQtyOrdered() {
         return qtyOrdered;
     }

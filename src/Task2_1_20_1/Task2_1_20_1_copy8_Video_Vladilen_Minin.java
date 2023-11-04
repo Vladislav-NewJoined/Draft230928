@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+//import static sun.nio.ch.DatagramChannelImpl.AbstractSelectableChannels.forEach;
+
 // источник: https://www.youtube.com/watch?v=nEabP9CYCAQ  _ Владилен Минин
 public class Task2_1_20_1_copy8_Video_Vladilen_Minin {
 }
@@ -45,7 +47,9 @@ class Test5 {
         students.stream().map(person -> person.getAge()*3).toList().forEach(System.out::println); //
         // https://www.youtube.com/watch?v=nEabP9CYCAQ Владилен Минин _ мин 8 58
 
-
+        students.stream().map((person -> "Имя: " + person.getName() + ", " + "Пол: " +
+                        person.getSex() + ", " + "Возраст: " + person.getAge() + ", " + "Курс: " + person.getCourse() + ", " + "Средняя оценка: " + person.getAvgGrade() + ".")).
+                forEach(System.out::println);
 
 
 
