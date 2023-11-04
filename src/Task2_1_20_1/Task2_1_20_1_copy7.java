@@ -1,6 +1,7 @@
 package Task2_1_20_1;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -55,9 +56,8 @@ class Test3 {
 
         // Сортируем по цене
         System.out.println("\nСОРТИРУЕМ КАТАЛОГ ПО ЦЕНЕ:");
-        catalog.stream().sorted().map((product -> "Наименование: " + product.getName() + ", " + "Цена: " +
-                        product.getPrice() + ", " + "Кол-во ед. в наличии на складе: " + product.getQtyInStock()
-                        + "."))
+//        catalog.stream().sorted(Comparator.comparing(Products::getPrice)).collect(Collectors.toList())
+        catalog.stream().sorted(Comparator.comparing(Products::getPrice)).toList()
                         .forEach(System.out::println);
         System.out.println();
 
@@ -97,6 +97,7 @@ class Products {
     private int price;
     private int qtyInStock;
     private int qtyOrdered;
+
 
     public Products(String name, int price, int qtyInStock, int qtyOrdered) {
         this.setName(name);
@@ -143,5 +144,15 @@ class Products {
 
     public void setQtyOrdered(int qtyOrdered) {
         this.qtyOrdered = qtyOrdered;
+    }
+
+    @Override
+    public String toString() {
+        return "Products{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", qtyInStock=" + qtyInStock +
+                ", qtyOrdered=" + qtyOrdered +
+                '}';
     }
 }
