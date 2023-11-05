@@ -2,9 +2,14 @@ package Task2_1_20_1;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class Task2_1_20_1_copy9_Video_Alex_Korolev {
+// источник: https://youtu.be/IQVwwwSe4Ic
+// про equals здесь мин 08 00 https://youtu.be/IQVwwwSe4Ic
+// здесь же про .collect(Collectors.toList());
+// здесь же, мин 10 00, про .sorted(Comparator.comparing(
+public class Task2_1_20_1_copy9_Video_Alexey_Korolev {
 }
 
 class Main2 {
@@ -31,7 +36,15 @@ class Main2 {
         List<Animal2> sorted = animals.stream()
                 .sorted(Comparator.comparing(Animal2::getAge))
                 .collect(Collectors.toList());
-        sorted.forEach(System.out::println);
+//        sorted.forEach(System.out::println);
+
+        // Chaining
+        Optional<String> oldestPredatorAge = animals.stream()
+                .filter(animal -> animal.getClassification().equals(Classification.PREDATOR))
+                .max(Comparator.comparing(Animal2::getAge))
+                .map(Animal2::getName);
+        oldestPredatorAge.ifPresent(System.out::println);
+
     }
 
     private static List<Animal2> getAnimals() {
@@ -40,7 +53,10 @@ class Main2 {
                 new Animal2("Лев", 10, Classification.PREDATOR),
                 new Animal2("Гиена", 11, Classification.PREDATOR),
                 new Animal2("Жираф", 7, Classification.HERBIVORE),
-                new Animal2("Гиббон", 35, Classification.OMNIVOROUS)
+                new Animal2("Гиббон", 35, Classification.OMNIVOROUS),
+                new Animal2("Лошадь", 36, Classification.HERBIVORE),
+                new Animal2("Рысь", 2, Classification.PREDATOR),
+                new Animal2("Динозавр", 200, Classification.PREDATOR)
 
         );
     }

@@ -89,6 +89,16 @@ class Test3 {
                         .forEach(System.out::println);
         System.out.println();
 
+        System.out.println("НАЗАД:");
+        catalog.stream().filter(element
+                -> Objects.equals(element.getName(), "Samsung Galaxy S100"))
+                        .map((product -> "Наименование: " + product.getName() + ", " + "Цена: " +
+                        product.getPrice() /*+ ", " + "Кол-во ед. в наличии на складе: " + product.getQtyInStock() */+ ", " + "Кол-во заказано: " +
+                        (product.getQtyOrdered()+2) + ", " +  "Итого сумма к оплате: " +
+                        product.getPrice()*2 + " руб."))
+                        .forEach(System.out::println);
+        System.out.println();
+
     }
 }
 
