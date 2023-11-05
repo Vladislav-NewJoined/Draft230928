@@ -104,6 +104,14 @@ class Test5_Zaur_Norris {
     }
 }
 
+// источник: https://youtu.be/5GU_zsDyS5k?list=PLqj7-hRTFl_oDMBjI_EstsFcDAwt-Arhs  Zaur_Norris
+// Streams. Method chaining (прокачанная Java)
+class Test6_Zaur_Norris {
+    public static void main(String[] args) {
+
+    }
+}
+
 class Student {
     private String name;
     private char sex;
