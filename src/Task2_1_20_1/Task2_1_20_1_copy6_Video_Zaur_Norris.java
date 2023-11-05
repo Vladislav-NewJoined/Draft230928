@@ -1,10 +1,9 @@
 package Task2_1_20_1;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
-// источник: https://www.youtube.com/playlist?list=PLqj7-hRTFl_oDMBjI_EstsFcDAwt-Arhs _ Заур Трегулов
+// источник: https://www.youtube.com/playlist?list=PLqj7-hRTFl_oDMBjI_EstsFcDAwt-Arhs _ весь плейлист  Заур Трегулов
 public class Task2_1_20_1_copy6_Video_Zaur_Norris {
 
 }
@@ -24,6 +23,7 @@ class Test1 {
 //                    .collect(Collectors.toList());
 //            System.out.println(list2);
 
+        // Метод sorted
         int[] array = {5, 9, 3, 8, 1};
         array = Arrays.stream(array).map(element
                 -> {
@@ -33,7 +33,7 @@ class Test1 {
             return element;
         }).toArray();
 
-        System.out.println(Arrays.toString(array));
+//        System.out.println(Arrays.toString(array));
 
     }
 }
@@ -69,9 +69,21 @@ class Test2 {
 //                        ->element.getAge() > 22 && element.getAvgGrade() < 7.2)
 //                .forEach(System.out::println);
 
-        students.stream().filter(element
-                        -> element.getAge() > 22 && element.getAvgGrade() < 7.2)
-                .toList().forEach(System.out::println);
+//        students.stream().filter(element
+//                        -> element.getAge() > 22 && element.getAvgGrade() < 7.2)
+//                .toList().forEach(System.out::println);
+
+        // Метод sorted
+        students = students.stream().sorted((x,y) ->
+        x.getName().compareTo(y.getName())
+        ).collect(Collectors.toList());
+        System.out.println(students);
+        System.out.println();
+
+        students = students.stream().sorted(Comparator.comparing((Student x) -> x.getName())
+        ).collect(Collectors.toList());
+        System.out.println(students);
+
     }
 }
 
@@ -79,6 +91,17 @@ class Test2 {
 // Streams. Метод collect: grouping и partitioning (прокачанная Java)_Заур Трегулов
 class Test4 {
 
+}
+
+// источник: https://youtu.be/7hSTTLSW7Rw  Zaur_Norris
+// Streams. Метод sorted (прокачанная Java)
+class Test5_Zaur_Norris {
+    public static void main(String[] args) {
+        int[] array = {3, 8, 1, 5, 9};
+        array = Arrays.stream(array).sorted().toArray();
+        System.out.println(Arrays.toString(array));
+
+    }
 }
 
 class Student {

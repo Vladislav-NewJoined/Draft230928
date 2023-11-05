@@ -2,7 +2,6 @@ package Task2_1_20_1;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 //import static sun.nio.ch.DatagramChannelImpl.AbstractSelectableChannels.forEach;
 
@@ -10,7 +9,7 @@ import java.util.stream.Stream;
 public class Task2_1_20_1_copy8_Video_Vladilen_Minin {
 }
 
-class Test5 {
+class Test5_Vladilen_Minin {
     public static void main(String[] args) {
         Student2 st1 = new Student2("Ivan", 'm', 22, 3, 8.3);
         Student2 st2 = new Student2("Nikolay", 'm', 28, 2, 6.4);
