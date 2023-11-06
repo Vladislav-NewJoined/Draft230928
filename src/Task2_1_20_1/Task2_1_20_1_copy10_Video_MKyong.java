@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+// источник: https://mkyong.com/java8/java-8-filter-a-map-examples/
 public class Task2_1_20_1_copy10_Video_MKyong {
     public static void main(String[] args) {
 
