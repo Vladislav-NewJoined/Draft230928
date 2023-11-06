@@ -2,6 +2,7 @@ package Task2_1_20_1;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 // источник: https://www.youtube.com/playlist?list=PLqj7-hRTFl_oDMBjI_EstsFcDAwt-Arhs _ весь плейлист  Заур Трегулов
 public class Task2_1_20_1_copy6_Video_Zaur_Norris {
@@ -82,7 +83,16 @@ class Test2 {
 
         students = students.stream().sorted(Comparator.comparing((Student x) -> x.getName())
         ).collect(Collectors.toList());
-        System.out.println(students);
+//        System.out.println(students);
+
+
+        // Метод chaining
+        students.stream().map(element ->
+        {element.setName(element.getName().toUpperCase()); return element;
+        })
+                .filter(element -> element.getSex() == 'f')
+                .sorted((x,y) -> x.getAge() - y.getAge())
+                .forEach(element -> System.out.println(element));
 
     }
 }
@@ -99,16 +109,32 @@ class Test5_Zaur_Norris {
     public static void main(String[] args) {
         int[] array = {3, 8, 1, 5, 9};
         array = Arrays.stream(array).sorted().toArray();
-        System.out.println(Arrays.toString(array));
+//        System.out.println(Arrays.toString(array));
 
     }
 }
 
 // источник: https://youtu.be/5GU_zsDyS5k?list=PLqj7-hRTFl_oDMBjI_EstsFcDAwt-Arhs  Zaur_Norris
 // Streams. Method chaining (прокачанная Java)
+// if - мин 1 34 или 3 29
 class Test6_Zaur_Norris {
     public static void main(String[] args) {
+        int [] array = {3,8,1,5,9,12,4,21,81,7,18};
 
+        int result = Arrays.stream(array).filter(e->e%2==1) .map(e->{if(e%3==0){e=e/3;} return e;})
+                .reduce((a,e)-> a+e).getAsInt();
+        System.out.println(result);
+
+    }
+}
+
+class Test6_copy2_Zaur_Norris {
+    public static void main(String[] args) {
+        Stream<Integer> stream1 = Stream.of(1,2,3,4,5,1,2,3);
+//        stream1.filter(el -> {
+//            System.out.println("!!!");
+//            return el%2 == 0;
+//        }).collect(Collectors.toList());
     }
 }
 
