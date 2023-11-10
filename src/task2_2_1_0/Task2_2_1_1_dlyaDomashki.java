@@ -1,6 +1,6 @@
 package task2_2_1_0;
 
-public class Task2_2_1_1_copy2_dlyaDomashki {
+public class Task2_2_1_1_dlyaDomashki {
 //    Урок 1. Многопоточность, ThreadЦель
 //    задания: Формирование навыков работы с потоками данных в JAVA
 //    Задание:

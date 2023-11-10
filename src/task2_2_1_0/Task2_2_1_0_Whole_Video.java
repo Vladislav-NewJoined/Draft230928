@@ -11,14 +11,14 @@ public class Task2_2_1_0_Whole_Video {
         Thread t = Thread.currentThread();
         System.out.println(t.getName());
 
-        Thread t2 = new MyThred();
+        Thread t2 = new MyThread();
         t2.start();
 //        t2.run();
 
     }
 }
 
-class MyThred extends Thread {
+class MyThread extends Thread {
     @Override
     public void run() {
         super.run();
