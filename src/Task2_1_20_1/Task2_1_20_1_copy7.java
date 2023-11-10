@@ -1,17 +1,16 @@
 package Task2_1_20_1;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 // источник: https://www.youtube.com/playlist?list=PLqj7-hRTFl_oDMBjI_EstsFcDAwt-Arhs  - Заур Трегулов
+// Streams. Метод filter (прокачанная Java)  https://youtu.be/C7uDcRGiwg8
+// Метод filter: мин 1 21
 public class Task2_1_20_1_copy7 {
 }
 
-// Streams. Метод filter (прокачанная Java)  https://youtu.be/C7uDcRGiwg8
-// Метод filter: мин 1 25
 class Test3 {
     public static void main(String[] args) {
         System.out.println("""
@@ -28,15 +27,15 @@ class Test3 {
                 Решение:\s""");
 
 
-        Products prod1 = new Products("Nokia 3310", 12345, 4, 0);
-        Products prod2 = new Products("Samsung Galaxy S100", 30000, 7, 0);
-        Products prod3 = new Products("IPhone 20", 392049, 1, 0);
-        Products prod4 = new Products("Google Pixel 10a", 30000, 0, 0);
-        List<Products> catalog = new ArrayList<>();
-        catalog.add(prod1);
-        catalog.add(prod2);
-        catalog.add(prod3);
-        catalog.add(prod4);
+        Products nokia = new Products("Nokia 3310", 12345, 4, 0);
+        Products samsungGalaxy = new Products("Samsung Galaxy S100", 30000, 7, 0);
+        Products iphone = new Products("IPhone 20", 392049, 1, 0);
+        Products googlePixel = new Products("Google Pixel 10a", 30000, 0, 0);
+        List<Products> catalog = Arrays.asList(nokia, samsungGalaxy, iphone, googlePixel);
+//                catalog.add(prod1);
+//                catalog.add(prod2);
+//                catalog.add(prod3);
+//                catalog.add(prod4);
 
         // Объявляем список: Название
         System.out.println("\nСписок: НАИМЕНОВАНИЕ: ");
@@ -58,49 +57,62 @@ class Test3 {
         System.out.println("\nСОРТИРУЕМ КАТАЛОГ ПО ЦЕНЕ:");
 //        catalog.stream().sorted(Comparator.comparing(Products::getPrice)).collect(Collectors.toList())
         catalog.stream().sorted(Comparator.comparing(Products::getPrice)).toList()
-                        .forEach(System.out::println);
-        System.out.println();
+                .forEach(System.out::println);
+//                System.out.println();
 
+        // Фильтруем относительно доступности товара в текущий момент для заказа
+        System.out.println("\nФИЛЬТРУЕМ ОТНОСИТЕЛЬНО ДОСТУПНОСТИ ТОВАРА ДЛЯ ЗАКАЗА: \n(исключаем позицию, которая на складе отсутствует)");
+        catalog.stream()
+//                        .sorted(Comparator.comparing(Products::getPrice)).toList()
+                .filter(p -> p.getQtyInStock() != 0/*, qtyInStock*/)
+//                        .forEach(System.out::println);
+                .forEach(p -> System.out.printf("Наименование: %s, Цена: %d, Кол-во на складе: %d.%n",
+                        p.getName(), p.getPrice(), p.getQtyInStock())
+                );
 
-        System.out.println("\nРЕАЛИЗУЕМ НАВИГАЦИОННОЕ МЕНЮ, СОСОЯЩЕЕ ИЗ РАЗДЕЛОВ:");
+        System.out.println("\nРЕАЛИЗУЕМ НАВИГАЦИОННОЕ МЕНЮ, СОСТОЯЩЕЕ ИЗ РАЗДЕЛОВ:");
         System.out.println("ПОЛНЫЙ КАТАЛОГ:");
-        catalog.stream().map((product -> "Наименование: " + product.getName() + ", " + "Цена: " +
-                        product.getPrice() + ", " + "Кол-во ед. в наличии на складе: " + product.getQtyInStock() /*+ ", " + "Кол-во заказано: " +
-                        product.getQtyOrdered() */+ "."))
-                        .forEach(System.out::println);
+        catalog.forEach(p -> System.out.printf("Наименование: %s, Цена: %d, Кол-во на складе: %d.%n",
+                p.getName(), p.getPrice(), p.getQtyInStock())
+        );
         System.out.println();
 
-        System.out.println("КОРЗИНА: \n(Выбрано: Samsung Galaxy S100 - 2 шт.)");
-        catalog.stream().filter(element
-                -> Objects.equals(element.getName(), "Samsung Galaxy S100"))
-                        .map((product -> "Наименование: " + product.getName() + ", " + "Цена: " +
-                        product.getPrice() /*+ ", " + "Кол-во ед. в наличии на складе: " + product.getQtyInStock() */+ ", " + "Кол-во заказано: " +
-                        (product.getQtyOrdered()+2) + "."))
-                        .forEach(System.out::println);
+        String name = "Samsung Galaxy S100";
+        int count = 2;
+
+        System.out.printf("КОРЗИНА: \n(Выбрано:  %s- %d шт.)%n", name, count);
+
+// нашли продукт
+        Products selected = catalog.stream()
+                .filter(product -> Objects.equals(product.getName(), name))
+                .filter(product -> product.getQtyInStock() >= count)
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException("Товар не найден"));
+// изменили состояние при заказе
+        selected.setQtyOrdered(count);
+// распечатали содержимое корзины
+        catalog
+                .stream()
+                .filter(product -> product.getQtyOrdered() > 0)
+                .forEach(p -> System.out.printf("Наименование: %s, Цена: %d, Кол-во заказа: %d.%n",
+                        p.getName(), p.getPrice(), p.getQtyOrdered()
+                ));
         System.out.println();
 
         System.out.println("ОФОРМЛЕНИЕ ЗАКАЗА:");
-        catalog.stream().filter(element
-                -> Objects.equals(element.getName(), "Samsung Galaxy S100"))
-                        .map((product -> "Наименование: " + product.getName() + ", " + "Цена: " +
-                        product.getPrice() /*+ ", " + "Кол-во ед. в наличии на складе: " + product.getQtyInStock() */+ ", " + "Кол-во заказано: " +
-                        (product.getQtyOrdered()+2) + ", " +  "Итого сумма к оплате: " +
-                        product.getPrice()*2 + " руб."))
-                        .forEach(System.out::println);
+        catalog.stream()
+                .filter(product -> Objects.equals(product.getName(), name)) // product.getQtyOrdered() > 0
+                .forEach(p -> System.out.printf("Наименование: %s, Цена: %d, Кол-во заказа: %d, Сумма к оплате: %d руб.%n",
+                        p.getName(), p.getPrice(), p.getQtyOrdered(), p.getPrice() * p.getQtyOrdered()
+                ));
         System.out.println();
+// изменили состояние после оформления заказа, т.е. покупки
+        selected.sell();
 
-        System.out.println("НАЗАД:");
-//        catalog.stream().map(element
-//                -> {if(element.getName().equals("Samsung Galaxy S100"))
-//                {element.getQtyInStock() = 2;}
-//                return element.getQtyInStock();
-//        })
-//                        .map((product -> "Наименование: " + product.getName() + ", " + "Цена: " +
-//                        product.getPrice() + ", " + "Кол-во ед. в наличии на складе: " + product.getQtyInStock()/* + ", "
-//                        + "Кол-во заказано: " + (product.getQtyOrdered()+2)*//* + ", " +  "Итого сумма к оплате: " +
-//                        product.getPrice()*2 + " руб."*/))
-//                        .forEach(System.out::println);
-//        System.out.println();
+        System.out.println("НАЗАД: \n(Samsung Galaxy S100 на складе осталось 5, а до заказа было 7)");
+        catalog.forEach(p -> System.out.printf("Наименование: %s, Цена: %d, Кол-во на складе: %d.%n",
+                p.getName(), p.getPrice(), p.getQtyInStock())
+        );
 
     }
 }
@@ -168,4 +180,34 @@ class Products {
                 ", qtyOrdered=" + qtyOrdered +
                 '}';
     }
+
+    // class Products
+    public void sell() {
+        this.qtyInStock -= this.qtyOrdered;
+        this.qtyOrdered = 0;
+    }
 }
+
+///*public */class Shop {
+//        private List<Products> stock;
+//
+//        public Shop(List<Products> products) {
+//                this.stock = new ArrayList<>(products);
+//        }
+//
+//        // Каталог
+//        public void inventory() {
+//                // вывести каталог товаров
+//        }
+//
+//        // Корзина
+//        public void putToCart(String name, int count) {
+//                // добавить в "корзину", распечатать её содержимое
+//        }
+//
+//        // Оформить заказ
+//        public void completeOrder() {
+//                // изменить состояние склада
+//        }
+//// ...
+//}
