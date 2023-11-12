@@ -95,7 +95,7 @@ class Main3 {
         }
 
         field.paintAllBrick(bricks);
-        scoreJLabel.setText(""+score);
+        scoreJLabel.setText("Score: "+score);
         field.repaint();
     }
 

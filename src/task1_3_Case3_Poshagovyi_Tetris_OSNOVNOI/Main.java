@@ -15,10 +15,11 @@ public class Main {
         int posX = 0;
         int posY = 0;
     }
+
     int score = 0;
-    JLabel scoreJLabel = new JLabel(){{
+    JLabel scoreJLabel = new JLabel() {{
         setHorizontalAlignment(CENTER);
-        setText("Score: "+score);
+        setText("Score: " + score);
     }};
 
     int NumCurrentBrick = 0;
@@ -29,23 +30,27 @@ public class Main {
         System.out.println("""
                 Задание:\s
                 Кейс 3. Пошаговый тетрис.\s
-                   Пусть у Вас будет поле 10х10 (двумерный массив chart). В случайном месте генерируется 
-                   фигура: можно начать с простых форм: …. :: … . : на Ваше усмотрение. Каждый ход считывайте 
-                   от игрока: просто опустить фигуру, или ещё сдвинуть ее влево-вправо. Считайте количество очков: 
-                   полностью выстроенных линий (таковые сгорают). Когда фигуре некуда упасть, игра закончена. 
+                   Пусть у Вас будет поле 10х10 (двумерный массив chart). В случайном месте генерируется
+                   фигура: можно начать с простых форм: …. :: … . : на Ваше усмотрение. Каждый ход считывайте
+                   от игрока: просто опустить фигуру, или ещё сдвинуть ее влево-вправо. Считайте количество очков:
+                   полностью выстроенных линий (таковые сгорают). Когда фигуре некуда упасть, игра закончена.
                    В файл записывайте рекордное количество очков. Реализуйте по крайней мере два-три класса.
- 
+                 
                 Решение:\s
                    Клавиши управления: Сдвиг: Up, Down, Right, Left. Вращение: Insert, Delete.
-                   Следующая фигура: Down. """);
+                   Следующая фигура: Down.""");
 
         bricks[NumCurrentBrick] = new brick();
 
         field.addKeyListener(new KeyListener() {
-            public void keyTyped(KeyEvent e) {}
-            public void keyReleased(KeyEvent e) {}
+            public void keyTyped(KeyEvent e) {
+            }
+
+            public void keyReleased(KeyEvent e) {
+            }
+
             public void keyPressed(KeyEvent e) {
-                step(e.getKeyText(e.getKeyCode()));
+                step(KeyEvent.getKeyText(e.getKeyCode()));
             }
         });
 
@@ -61,18 +66,18 @@ public class Main {
         int dirX = 0;
         int dirY = 0;
 
-        if (dir_ == "Down")
+        if (dir_.equals("Down"))
             dirY++;
-        if (dir_ == "Up")
+        if (dir_.equals("Up"))
             dirY--;
-        if (dir_ == "Right")
+        if (dir_.equals("Right"))
             dirX++;
-        if (dir_ == "Left")
+        if (dir_.equals("Left"))
             dirX--;
 
-        if (dir_ == "Insert")
+        if (dir_.equals("Insert"))
             rotateLeft();
-        if (dir_ == "Delete")
+        if (dir_.equals("Delete"))
             rotateRight();
 
 
@@ -90,7 +95,7 @@ public class Main {
         }
 
         field.paintAllBrick(bricks);
-        scoreJLabel.setText(""+score);
+        scoreJLabel.setText("Score: " + score);
         field.repaint();
     }
 
@@ -156,7 +161,7 @@ public class Main {
                         int nextX = currentCell[0] + currentBrick.posX + dirX_;
                         int nextY = currentCell[1] + currentBrick.posY + dirY_;
 
-                        // колизия краёв
+                        // коллизия краёв
                         if (nextY < 0)
                             out = true;
                         if (nextY >= field.height)
@@ -225,9 +230,10 @@ public class Main {
     class Field extends JFrame {
         int width = 10;
         int height = 10;
-        JPanel fieldPanel = new JPanel(){{
+        JPanel fieldPanel = new JPanel() {{
             setLayout(new GridLayout(height, width));
         }};
+
         {
             for (int currentX = 0; currentX < width; currentX++)
                 for (int currentY = 0; currentY < height; currentY++)
@@ -237,7 +243,7 @@ public class Main {
 
             setLayout(new BorderLayout());
             add(fieldPanel);
-            add(scoreJLabel,"North");
+            add(scoreJLabel, "North");
             //стандартные настройки окна
             setVisible(true);
             setDefaultCloseOperation(EXIT_ON_CLOSE);
