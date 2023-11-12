@@ -1,4 +1,4 @@
-package task1_3_Case3_Poshagovyi_Tetris_OSNOVNOI;
+package task1_3_Case3_TETRIS_OSNOVNOI;
 // источник: https://russianblogs.com/article/6230856725/
 
 import java.awt.BorderLayout;

@@ -1,4 +1,4 @@
-package task1_3_Case3_Poshagovyi_Tetris_OSNOVNOI;
+package task1_3_Case3_TETRIS_OSNOVNOI;
 
 import javax.swing.*;
 import java.awt.*;

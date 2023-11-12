@@ -1,4 +1,4 @@
-package task1_3_Case3_Poshagovyi_Tetris_OSNOVNOI;
+package task1_3_Case3_TETRIS_OSNOVNOI;
 // источник: https://github.com/mdinep/java-simple-tetris/blob/master/Tetris.java - из GitHub с панелью счет
 
 import java.awt.Color;
