@@ -15,9 +15,6 @@ import javax.swing.JTextArea;
 public class Main_copy5_Example_from_russianblogs_com {
 }
 
-
-
-
 class Main2 extends JFrame implements KeyListener {
     private JTextArea [] [] grids; // Превращаем весь интерфейс в текстовую область, и вся игра воспроизводится внутри
     private int data [] []; // Для данных каждой сетки 1 означает квадрат, 0 означает пустую область

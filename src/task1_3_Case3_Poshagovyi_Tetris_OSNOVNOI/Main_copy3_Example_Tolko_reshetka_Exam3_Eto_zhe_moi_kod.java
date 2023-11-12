@@ -5,7 +5,12 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Main {
+public class Main_copy3_Example_Tolko_reshetka_Exam3_Eto_zhe_moi_kod {
+}
+
+
+
+class Main3 {
     class brick {
         int[][][] typicalForms = new int[][][]{{{1, 0}, {1, 1}, {1, 2}, {0, 2}}, {{0, 0}, {0, 1}, {0, 2}, {1, 2}},
                 {{1, 0}, {0, 1}, {1, 1}, {2, 1}}, {{0, 0}, {0, 1}, {0, 2}, {0, 3}}, {{0, 0}, {0, 1}, {1, 0}, {1, 1}}};
@@ -53,7 +58,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        new Main();
+        new Main3();
     }
 
     void step(String dir_) {
@@ -268,3 +273,4 @@ public class Main {
         }
     }
 }
+
