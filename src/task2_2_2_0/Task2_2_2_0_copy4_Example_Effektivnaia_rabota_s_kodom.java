@@ -1,4 +1,4 @@
-package task2_2_2_1;
+package task2_2_2_0;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,7 +9,7 @@ import java.util.List;
 
 // источник: https://youtu.be/tpv5n2jWHlw
 // Эффективная работа с кодом в IntelliJ IDEA, или Знаете ли вы свою IDE как знаем её мы?
-public class Task2_2_2_1_copy4_Example_Effektivnaia_rabota_s_kodom {
+public class Task2_2_2_0_copy4_Example_Effektivnaia_rabota_s_kodom {
     public static void main(String[] args) throws IOException {
         System.out.println("""
                 Задание:\s
@@ -20,7 +20,7 @@ public class Task2_2_2_1_copy4_Example_Effektivnaia_rabota_s_kodom {
                 Решение:\s""");
 
 
-        BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("src/task2_2_2_0/input.txt"));
         List<String> lines = new ArrayList<String>();
         String line;
         while ((line = reader.readLine()) != null ) {

@@ -1,6 +1,6 @@
-package task2_2_2_1;
+package task2_2_2_0;
 
-public class Task2_2_2_1_copy3_Example {
+public class Task2_2_2_0_copy2_Example {
     public static void main(String[] args) throws InterruptedException {
         System.out.println("""
                 Задание:\s
@@ -10,7 +10,7 @@ public class Task2_2_2_1_copy3_Example {
 
                 Решение:\s""");
 
-        Thread t = new Thread(new MyThread3());
+        MyThread2 t = new MyThread2();
         t.start();
         Thread.sleep(700);
         t.interrupt();
@@ -19,16 +19,36 @@ public class Task2_2_2_1_copy3_Example {
     }
 }
 
-class MyThread3 implements Runnable {
+class MyThread2 extends Thread {
+    int counter = 0;
 
-    int count = 0;
+
+
+//    boolean isAlive = true;
+//    void stopCounter() {
+//        isAlive = false;
+//    }
 
     @Override
     public void run() {
-        while (!Thread.currentThread().interrupted()) {
-//            Thread.sleep(100);
-            count++;
+        super.run();
+        while (!isInterrupted()) {
+            counter++;
         }
-        System.out.println(count);
+        System.out.println(counter);
+
+//        while (isAlive) {
+//            counter++;
+//            try {
+//                Thread.sleep(7);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        System.out.println(counter);
+//
+
+//        while (true) {
+//            counter++;
     }
 }
