@@ -3,7 +3,7 @@ package task2_2_2_0;
 
 public class Task2_2_2_0_Whole_Video {
     public static void main(String[] args) throws InterruptedException {
-        MyThread t = new MyThread();
+        Thread t = new Thread(new MyThread());
         t.start();
         Thread.sleep(700);
         t.interrupt();
@@ -12,36 +12,54 @@ public class Task2_2_2_0_Whole_Video {
     }
 }
 
-class MyThread extends Thread {
-    int counter = 0;
+class MyThread implements Runnable {
 
-
-
-//    boolean isAlive = true;
-//    void stopCounter() {
-//        isAlive = false;
-//    }
+    int count = 0;
 
     @Override
     public void run() {
-        super.run();
-        while (!isInterrupted()) {
-            counter++;
+        while (!Thread.currentThread().interrupted()) {
+//            Thread.sleep(100);
+            count++;
         }
-        System.out.println(counter);
+        System.out.println(count);
+    }
+}
 
-//        while (isAlive) {
+
+
+
+
+//class MyThread extends Thread {
+//    int counter = 0;
+//
+//
+//
+////    boolean isAlive = true;
+////    void stopCounter() {
+////        isAlive = false;
+////    }
+//
+//    @Override
+//    public void run() {
+//        super.run();
+//        while (!isInterrupted()) {
 //            counter++;
-//            try {
-//                Thread.sleep(7);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
 //        }
 //        System.out.println(counter);
 //
-
-//        while (true) {
-//            counter++;
-    }
-}
+////        while (isAlive) {
+////            counter++;
+////            try {
+////                Thread.sleep(7);
+////            } catch (InterruptedException e) {
+////                e.printStackTrace();
+////            }
+////        }
+////        System.out.println(counter);
+////
+//
+////        while (true) {
+////            counter++;
+//    }
+//}
