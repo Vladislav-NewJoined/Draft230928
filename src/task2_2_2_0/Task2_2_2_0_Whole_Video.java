@@ -19,13 +19,104 @@ class MyThread implements Runnable {
     @Override
     public void run() {
         while (!Thread.currentThread().interrupted()) {
-//            Thread.sleep(100);
             count++;
+            try {
+                Thread.sleep(2);
+            } catch (InterruptedException e) {
+                System.out.println(Thread.currentThread().getName()
+                        + " has been interrupted");
+                System.out.println(Thread.currentThread().isInterrupted());
+                break;
+            }
         }
         System.out.println(count);
     }
 }
 
+
+//class MyThread implements Runnable {
+//
+//    int count = 0;
+//
+//    @Override
+//    public void run() {
+//        try {
+//        while (!Thread.currentThread().interrupted()) {
+////            Thread.sleep(100);
+//            count++;
+//                Thread.sleep(2);
+//        }
+//    } catch (InterruptedException e) {
+//        System.out.println(Thread.currentThread().getName()
+//                + " has been interrupted");
+//        System.out.println(Thread.currentThread().isInterrupted());
+////        Thread.currentThread().interrupt();
+//    }
+//        System.out.println(count);
+//    }
+//}
+
+
+//class MyThread implements Runnable {
+//
+//    int count = 0;
+//
+//    @Override
+//    public void run() {
+//        try {
+//        while (!Thread.currentThread().interrupted()) {
+////            Thread.sleep(100);
+//            count++;
+//                Thread.sleep(2);
+//        }
+//    } catch (InterruptedException e) {
+//        System.out.println(Thread.currentThread().getName()
+//                + " has been interrupted");
+//        System.out.println(Thread.currentThread().isInterrupted());
+//        Thread.currentThread().interrupt();
+//    }
+//        System.out.println(count);
+//    }
+//}
+
+
+//class MyThread implements Runnable {
+//
+//    int count = 0;
+//
+//    @Override
+//    public void run() {
+//        while (!Thread.currentThread().interrupted()) {
+////            Thread.sleep(100);
+//            count++;
+//            try {
+//                Thread.sleep(2);
+//            } catch (InterruptedException e) {
+//                System.out.println(Thread.currentThread().getName()
+//                        + " has been interrupted");
+//                System.out.println(Thread.currentThread().isInterrupted());
+//                Thread.currentThread().interrupt();
+//            }
+//        }
+//        System.out.println(count);
+//    }
+//}
+
+
+//class MyThread implements Runnable {
+//
+//    int count = 0;
+//
+//    @Override
+//    public void run() {
+//        while (!Thread.currentThread().interrupted()) {
+////            Thread.sleep(100);
+//            count++;
+//        }
+//        System.out.println(count);
+//    }
+//}
+//
 
 
 
