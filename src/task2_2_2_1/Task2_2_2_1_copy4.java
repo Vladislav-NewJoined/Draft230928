@@ -1,6 +1,6 @@
 package task2_2_2_1;
 
-public class Task2_2_2_1 {
+public class Task2_2_2_1_copy4 {
     public static void main(String[] args) throws InterruptedException {
         System.out.println("""
                 Задание:\s
@@ -10,13 +10,13 @@ public class Task2_2_2_1 {
 
                 Решение:\s""");
 
-        Thread t = new Thread(new MyThread());
+        Thread t = new Thread(new MyThread4());
         t.start();
 
     }
 }
 
-class MyThread implements Runnable {
+class MyThread4 implements Runnable {
 
     int count = 0;
 
