@@ -6,6 +6,9 @@ import java.util.Scanner;
 public class Task2_2_2_1_copy6 {
 
     public static void main(String[] args) throws InterruptedException {
+        System.out.println("РЕАЛИЗУЕМ СЕКУНДОМЕР В ПОТОКОВОМ МЕТОДЕ run " +
+                "\n(для остановки секундомера поставьте курсор в консоль, " +
+                "наберите любой текст и нажмите ENTER): ");
         TimerState6 state = new TimerState6();
         new TimerThread6(state).start();
         new InputThread6(state).start();
@@ -65,6 +68,7 @@ class InputThread6 extends Thread {
         String s = in.nextLine();
         if (s != null) {
             state.stopTimer();
+//            System.exit();
         }
     }
 }

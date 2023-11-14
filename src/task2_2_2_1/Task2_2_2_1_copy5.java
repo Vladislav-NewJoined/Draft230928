@@ -6,7 +6,9 @@ import java.util.Scanner;
 public class Task2_2_2_1_copy5 {
 
     public static void main(String[] args) throws InterruptedException {
-        System.out.println("РЕАЛИЗУЕМ СЕКУНДОМЕР В ПОТОКОВОМ МЕТОДЕ run: ");
+        System.out.println("РЕАЛИЗУЕМ СЕКУНДОМЕР В ПОТОКОВОМ МЕТОДЕ run " +
+                "\n(для остановки секундомера поставьте курсор в консоль, " +
+                "наберите любой текст и нажмите ENTER): ");
         TimerState5 state = new TimerState5();
         new TimerThread5(state).start();
         new inputThread5(state).start();

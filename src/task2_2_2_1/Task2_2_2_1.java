@@ -1,5 +1,7 @@
 package task2_2_2_1;
 
+import java.util.Scanner;
+
 public class Task2_2_2_1 {
     public static void main(String[] args) throws InterruptedException {
         System.out.println("""
@@ -10,20 +12,24 @@ public class Task2_2_2_1 {
 
                 Решение:\s""");
 
-        Thread t = new Thread(new MyThread());
+        Thread t = new Thread(new ThreadTimerStart());
         t.start();
+
+        Thread t2 = new Thread(new ThreadTimerFinish());
+        t2.start();
 
     }
 }
 
-class MyThread implements Runnable {
+class ThreadTimerStart implements Runnable {
 
     int count = 0;
 
     @Override
     public void run() {
-        System.out.println("РЕАЛИЗУЕМ СЕКУНДОМЕР В ПОТОКОВОМ МЕТОДЕ run: ");
-//        while (!Thread.currentThread().interrupted()) {
+        System.out.println("РЕАЛИЗУЕМ СЕКУНДОМЕР В ПОТОКОВОМ МЕТОДЕ run " +
+                "\n(для остановки секундомера поставьте курсор в консоль, " +
+                "наберите любой текст и нажмите ENTER): ");
         while (!Thread.interrupted()) {
             try {
                 Thread.sleep(1000);
@@ -36,3 +42,14 @@ class MyThread implements Runnable {
     }
 }
 
+class ThreadTimerFinish extends Thread {
+    @Override
+    public void run() {
+        super.run();
+        Scanner in = new Scanner(System.in);
+        String s = in.nextLine();
+        if (s != null) {
+            System.exit(0);
+        }
+    }
+}
