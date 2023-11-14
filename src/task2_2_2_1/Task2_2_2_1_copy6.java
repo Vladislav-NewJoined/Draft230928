@@ -6,7 +6,9 @@ import java.util.Scanner;
 public class Task2_2_2_1_copy6 {
 
     public static void main(String[] args) throws InterruptedException {
-
+        TimerState6 state = new TimerState6();
+        new TimerThread6(state).start();
+        new InputThread6(state).start();
     }
 
 }
