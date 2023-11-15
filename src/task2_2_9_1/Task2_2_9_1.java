@@ -56,7 +56,7 @@ class MyThread4 implements Runnable {
                 throw new RuntimeException(e);
             }
             System.out.println("Runnable count " + count);
-            System.out.println();
         }
+        System.out.println();
     }
 }
