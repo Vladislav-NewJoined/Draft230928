@@ -3,11 +3,12 @@ package task2_2_9_1_copy6_Example_kvai4_nextIterate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
+
 // источник: https://youtu.be/ns1imummWPw  Урок по Java 75: Многопоточность 10: Wait and Notify пример
 // отматываем назад от мин 10 38
 public class ThreadExample_NextIterate4 {
-    static List<String> strings = Collections.synchronizedList(new ArrayList<>());
+    static final List<String> strings = Collections.synchronizedList(new ArrayList<>());
+
     public static void main(String[] args) throws InterruptedException {
         System.out.println("""
                 Задание:\s
@@ -26,8 +27,9 @@ public class ThreadExample_NextIterate4 {
                 Решение:\s""");
 
         new ThreadExample_NextIterate4.MyThread4_4().start();
-        new MyThread7_4().start();
+        new ThreadExample_NextIterate4.MyThread7_4().start();
     }
+
     static class MyThread4_4 extends Thread {
         int count = 0;
 
@@ -46,33 +48,18 @@ public class ThreadExample_NextIterate4 {
                         try {
                             Thread.sleep(800);
                         } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
+//                            throw new RuntimeException(e);
+                            e.printStackTrace();
                         }
                         System.out.println("Runnable count " + count);
                     }
                     System.out.println();
                     count++;
                 }
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
 
-            Scanner scanner = new Scanner(System.in);
-            while (true) {
-                synchronized (strings) {
-                    strings.add(scanner.nextLine());
-
-                    strings.notify();
-                }
-
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            synchronized (strings) {
+                strings.notify();
             }
         }
     }
@@ -80,44 +67,50 @@ public class ThreadExample_NextIterate4 {
     static class MyThread7_4 extends Thread {
         @Override
         public void run() {
-            while (strings.isEmpty()) {
-                synchronized (strings) {
+            synchronized (strings) {
+
+                try {
+                    Thread.sleep(800);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                try {
+                    strings.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                // 7. 4.	Создать три потока, выполняющих задачу распечатки значений.
+                System.out.println("7. Реализуем решение по Заданию 2. Создать класс реализующий Runnable. " +
+                        "4. Создать три потока, выполняющих задачу распечатки значений." + "\nНа примере " +
+                        "вывода уведомлений о старте и финише трёх потоков.");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                for (int i = 0; i < 3; i++) {
+                    System.out.println("Thread" + (i + 1) + " started");
                     try {
-                        strings.wait();
+                        Thread.sleep(800);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
-                    }
-                    // 7. 4.	Создать три потока, выполняющих задачу распечатки значений.
-                    System.out.println("7. Реализуем решение по Заданию 2. Создать класс реализующий Runnable. " +
-                            "4. Создать три потока, выполняющих задачу распечатки значений." + "\nНа примере " +
-                            "вывода уведомлений о старте и финише трёх потоков.");
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                    for (int i = 0; i < 3; i++) {
-                        System.out.println("Thread" + (i+1) + " started");
-                        try {
-                            Thread.sleep(800);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    for (int i = 0; i < 3; i++) {
-                        System.out.println("Thread" + (i+1) + " finished");
-                        try {
-                            Thread.sleep(800);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
                     }
                 }
-                System.exit(0);
+
+                for (int i = 0; i < 3; i++) {
+                    System.out.println("Thread" + (i + 1) + " finished");
+                    try {
+                        Thread.sleep(800);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                }
             }
+            System.exit(0);
         }
     }
 }
