@@ -33,6 +33,23 @@ public class ThreadExample_NextIterate {
 
         @Override
         public void run() {
+            synchronized (strings) {
+                /// 4. 1.	Создать класс, реализующий интерфейс Runnable.
+                System.out.println("4. Реализуем решение по Заданию 2. Создать класс реализующий Runnable. " +
+                        "1. Создать класс, реализующий интерфейс Runnable." + "\nНа примере создания счётчика " +
+                        "от 1-го до 5-ти:");
+
+                for (int i = 0; i < 5; i++) {
+                    count++;
+                    try {
+                        Thread.sleep(800);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                    System.out.println("Runnable count " + count);
+                }
+                System.out.println();
+            }
             Scanner scanner = new Scanner(System.in);
             while (true) {
                 synchronized (strings) {
@@ -64,6 +81,7 @@ public class ThreadExample_NextIterate {
             }
         }
     }
+
     static class MyThread7_2 extends Thread {
         @Override
         public void run() {
@@ -87,10 +105,21 @@ public class ThreadExample_NextIterate {
 
                     for (int i = 0; i < 3; i++) {
                         System.out.println("Thread" + (i+1) + " started");
+                        try {
+                            Thread.sleep(800);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                     for (int i = 0; i < 3; i++) {
                         System.out.println("Thread" + (i+1) + " finished");
+                    try {
+                        Thread.sleep(800);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
                     }
                 }
                 System.exit(0);
