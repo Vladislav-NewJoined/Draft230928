@@ -13,12 +13,29 @@ public class ThreadExample_NextIterate {
         new ThreadExample_NextIterate.Machine2().start();
     }
     static class Operator2 extends Thread {
+        int count = 0;
+
         @Override
         public void run() {
             Scanner scanner = new Scanner(System.in);
             while (true) {
                 synchronized (strings) {
                     strings.add(scanner.nextLine());
+                    System.out.println("4. Реализуем решение по Заданию 2. Создать класс реализующий Runnable. " +
+                            "1. Создать класс, реализующий интерфейс Runnable." + "\nНа примере создания счётчика " +
+                            "от 1-го до 5-ти:");
+
+                    for (int i = 0; i < 5; i++) {
+                        count++;
+                        try {
+                            Thread.sleep(800);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        System.out.println("Runnable count " + count);
+                    }
+                    System.out.println();
+
                     strings.notify();
                 }
 
@@ -40,7 +57,25 @@ public class ThreadExample_NextIterate {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    System.out.println(strings.remove(0));
+//                    System.out.println(strings.remove(0));
+                    /// 7. 4.	Создать три потока, выполняющих задачу распечатки значений.
+                    System.out.println("7. Реализуем решение по Заданию 2. Создать класс реализующий Runnable. " +
+                            "4. Создать три потока, выполняющих задачу распечатки значений." + "\nНа примере " +
+                            "вывода уведомлений о старте и финише трёх потоков.");
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    for (int i = 0; i < 3; i++) {
+                        System.out.println("Thread" + (i+1) + " started");
+                    }
+
+                    for (int i = 0; i < 3; i++) {
+                        System.out.println("Thread" + (i+1) + " finished");
+                    }
+
                 }
             }
         }
