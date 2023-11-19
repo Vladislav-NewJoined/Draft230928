@@ -36,7 +36,7 @@ public class ThreadExample_NextIterate3 {
         @Override
         public void run() {
             synchronized (strings) {
-                /// 4. 1.	Создать класс, реализующий интерфейс Runnable.
+                // 4. 1.	Создать класс, реализующий интерфейс Runnable.
                 System.out.println("4. Реализуем решение по Заданию 2. Создать класс реализующий Runnable. " +
                         "1. Создать класс, реализующий интерфейс Runnable." + "\nНа примере создания счётчика " +
                         "от 1-го до 5-ти:");
@@ -52,11 +52,12 @@ public class ThreadExample_NextIterate3 {
                 }
                 System.out.println();
             }
+
             Scanner scanner = new Scanner(System.in);
             while (true) {
                 synchronized (strings) {
                     strings.add(scanner.nextLine());
-                    /// 4. 1.	Создать класс, реализующий интерфейс Runnable.
+                    // 4. 1.	Создать класс, реализующий интерфейс Runnable.
                     System.out.println("4. Реализуем решение по Заданию 2. Создать класс реализующий Runnable. " +
                             "1. Создать класс, реализующий интерфейс Runnable." + "\nНа примере создания счётчика " +
                             "от 1-го до 5-ти:");
@@ -95,7 +96,7 @@ public class ThreadExample_NextIterate3 {
                         e.printStackTrace();
                     }
 //                    System.out.println(strings.remove(0));
-                    /// 7. 4.	Создать три потока, выполняющих задачу распечатки значений.
+                    // 7. 4.	Создать три потока, выполняющих задачу распечатки значений.
                     System.out.println("7. Реализуем решение по Заданию 2. Создать класс реализующий Runnable. " +
                             "4. Создать три потока, выполняющих задачу распечатки значений." + "\nНа примере " +
                             "вывода уведомлений о старте и финише трёх потоков.");
