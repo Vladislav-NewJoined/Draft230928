@@ -1,4 +1,4 @@
-package task2_2_9_1_copy6_Example_kvai3_nextIterate;
+package task2_2_9_1_copy6_Example_kvai4_nextIterate;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 // источник: https://youtu.be/ns1imummWPw  Урок по Java 75: Многопоточность 10: Wait and Notify пример
 // отматываем назад от мин 10 38
-public class ThreadExample_NextIterate3 {
+public class ThreadExample_NextIterate4 {
     static List<String> strings = Collections.synchronizedList(new ArrayList<>());
     public static void main(String[] args) throws InterruptedException {
         System.out.println("""
@@ -25,10 +25,10 @@ public class ThreadExample_NextIterate3 {
 
                 Решение:\s""");
 
-        new ThreadExample_NextIterate3.MyThread4_3().start();
-        new ThreadExample_NextIterate3.MyThread7_3().start();
+        new ThreadExample_NextIterate4.MyThread4_4().start();
+        new MyThread7_4().start();
     }
-    static class MyThread4_3 extends Thread {
+    static class MyThread4_4 extends Thread {
         int count = 0;
 
         @Override
@@ -64,10 +64,6 @@ public class ThreadExample_NextIterate3 {
             while (true) {
                 synchronized (strings) {
                     strings.add(scanner.nextLine());
-                    for (int i = 0; i < 5; i++) {
-                        count++;
-                    }
-                    System.out.println();
 
                     strings.notify();
                 }
@@ -81,7 +77,7 @@ public class ThreadExample_NextIterate3 {
         }
     }
 
-    static class MyThread7_3 extends Thread {
+    static class MyThread7_4 extends Thread {
         @Override
         public void run() {
             while (strings.isEmpty()) {
