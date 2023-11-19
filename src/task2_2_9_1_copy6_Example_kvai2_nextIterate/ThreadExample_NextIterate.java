@@ -25,10 +25,11 @@ public class ThreadExample_NextIterate {
 
                 Решение:\s""");
 
-        new ThreadExample_NextIterate.MyThread4_2().start();
-        new ThreadExample_NextIterate.MyThread7_2().start();
+        new MyThread4().start();
+        new MyThread7().start();
+//        new ThreadExample_NextIterate.MyThread7().start();
     }
-    static class MyThread4_2 extends Thread {
+    static class MyThread4 extends Thread {
         int count = 0;
 
         @Override
@@ -82,7 +83,7 @@ public class ThreadExample_NextIterate {
         }
     }
 
-    static class MyThread7_2 extends Thread {
+    static class MyThread7 extends Thread {
         @Override
         public void run() {
             while (strings.isEmpty()) {

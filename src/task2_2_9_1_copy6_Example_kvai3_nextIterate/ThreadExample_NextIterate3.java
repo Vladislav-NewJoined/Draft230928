@@ -1,13 +1,14 @@
 package task2_2_9_1_copy6_Example_kvai3_nextIterate;
 
+import task2_2_9_1_copy6_Example_kvai2_nextIterate.ThreadExample_NextIterate;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
-
 // источник: https://youtu.be/ns1imummWPw  Урок по Java 75: Многопоточность 10: Wait and Notify пример
 // отматываем назад от мин 10 38
-public class ThreadExample_NextIterate2 {
+public class ThreadExample_NextIterate3 {
     static List<String> strings = Collections.synchronizedList(new ArrayList<>());
     public static void main(String[] args) throws InterruptedException {
         System.out.println("""
@@ -26,10 +27,10 @@ public class ThreadExample_NextIterate2 {
 
                 Решение:\s""");
 
-        new ThreadExample_NextIterate2.MyThread4_2().start();
-        new ThreadExample_NextIterate2.MyThread7_2().start();
+        new ThreadExample_NextIterate3.MyThread4_3().start();
+        new ThreadExample_NextIterate3.MyThread7_3().start();
     }
-    static class MyThread4_2 extends Thread {
+    static class MyThread4_3 extends Thread {
         int count = 0;
 
         @Override
@@ -83,7 +84,7 @@ public class ThreadExample_NextIterate2 {
         }
     }
 
-    static class MyThread7_2 extends Thread {
+    static class MyThread7_3 extends Thread {
         @Override
         public void run() {
             while (strings.isEmpty()) {
@@ -115,11 +116,11 @@ public class ThreadExample_NextIterate2 {
 
                     for (int i = 0; i < 3; i++) {
                         System.out.println("Thread" + (i+1) + " finished");
-                    try {
-                        Thread.sleep(800);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                        try {
+                            Thread.sleep(800);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
 
                     }
                 }
@@ -128,4 +129,3 @@ public class ThreadExample_NextIterate2 {
         }
     }
 }
-
