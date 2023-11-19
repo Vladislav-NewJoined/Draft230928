@@ -9,10 +9,26 @@ import java.util.Scanner;
 public class ThreadExample_NextIterate {
     static List<String> strings = Collections.synchronizedList(new ArrayList<>());
     public static void main(String[] args) throws InterruptedException {
-        new ThreadExample_NextIterate.Operator2().start();
-        new ThreadExample_NextIterate.Machine2().start();
+        System.out.println("""
+                Задание:\s
+                Модуль 2. Тема 2. Урок 9. Многопоточность.
+                    Задание:
+                      1. Создать класс расширяющий Thread
+                      1.	Создать класс NewThread расширяющий Thread.
+                      2.	Переопределить метод run(). В цикле for вывести на консоль символ 100 раз.
+                      3.	Создать экземпляр класса и запустить новый поток.
+                      2. Создать класс реализующий Runnable
+                      1.	Создать класс, реализующий интерфейс Runnable.
+                      2.	Переопределить run() метод. Создать цикл for. В цикле распечатываем значения от 0 до 100 делящиеся на 10 без остатка.
+                      3.	Используем статический метод Thread.sleep(), чтобы сделать паузу.
+                      4.	Создать три потока, выполняющих задачу распечатки значений.
+
+                Решение:\s""");
+
+        new ThreadExample_NextIterate.MyThread4_2().start();
+        new ThreadExample_NextIterate.MyThread7_2().start();
     }
-    static class Operator2 extends Thread {
+    static class MyThread4_2 extends Thread {
         int count = 0;
 
         @Override
@@ -21,6 +37,7 @@ public class ThreadExample_NextIterate {
             while (true) {
                 synchronized (strings) {
                     strings.add(scanner.nextLine());
+                    /// 4. 1.	Создать класс, реализующий интерфейс Runnable.
                     System.out.println("4. Реализуем решение по Заданию 2. Создать класс реализующий Runnable. " +
                             "1. Создать класс, реализующий интерфейс Runnable." + "\nНа примере создания счётчика " +
                             "от 1-го до 5-ти:");
@@ -47,7 +64,7 @@ public class ThreadExample_NextIterate {
             }
         }
     }
-    static class Machine2 extends Thread {
+    static class MyThread7_2 extends Thread {
         @Override
         public void run() {
             while (strings.isEmpty()) {
@@ -75,8 +92,8 @@ public class ThreadExample_NextIterate {
                     for (int i = 0; i < 3; i++) {
                         System.out.println("Thread" + (i+1) + " finished");
                     }
-
                 }
+                System.exit(0);
             }
         }
     }
