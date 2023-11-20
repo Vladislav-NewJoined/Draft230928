@@ -31,20 +31,20 @@ public class Example8 {
         Thread t4 = new Thread(new MyThread4());
         t4.start();
 
-        Thread tPause4 = new Thread(new Pause());
-        tPause4.start();
+//        Thread tPause4 = new Thread(new Pause());
+//        tPause4.start();
 
         Thread t5 = new Thread(new MyThread5());
         t5.start();
 
-        Thread tPause5 = new Thread(new Pause());
-        tPause5.start();
+//        Thread tPause5 = new Thread(new Pause());
+//        tPause5.start();
 
         Thread t6 = new Thread(new MyThread6());
         t6.start();
 
-        Thread tPause6 = new Thread(new Pause());
-        tPause6.start();
+//        Thread tPause6 = new Thread(new Pause());
+//        tPause6.start();
 
 //        Thread t7 = new Thread(new MyThread7());
 //        t7.start();
@@ -66,7 +66,7 @@ public class Example8 {
                     for (int i = 0; i < 5; i++) {
                         count++;
                         try {
-                            Thread.sleep(800);
+                            Thread.sleep(600);
                         } catch (InterruptedException e) {
 //                            throw new RuntimeException(e);
                             e.printStackTrace();
@@ -99,7 +99,7 @@ public class Example8 {
 
                 for (int i = 0; i <= 100; i++) {
                     try {
-                        Thread.sleep(60);
+                        Thread.sleep(30);
                     } catch (InterruptedException e) {
 //                            throw new RuntimeException(e);
                         e.printStackTrace();
@@ -168,7 +168,7 @@ public class Example8 {
             synchronized (strings) {
 
                 try {
-                    Thread.sleep(800);
+                    Thread.sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -184,7 +184,7 @@ public class Example8 {
                         "4. Создать три потока, выполняющих задачу распечатки значений." + "\nНа примере " +
                         "вывода уведомлений о старте и финише трёх потоков:");
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(400);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -192,7 +192,7 @@ public class Example8 {
                 for (int i = 0; i < 3; i++) {
                     System.out.println("Thread" + (i + 1) + " started");
                     try {
-                        Thread.sleep(800);
+                        Thread.sleep(500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -201,7 +201,7 @@ public class Example8 {
                 for (int i = 0; i < 3; i++) {
                     System.out.println("Thread" + (i + 1) + " finished");
                     try {
-                        Thread.sleep(800);
+                        Thread.sleep(500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -217,31 +217,33 @@ public class Example8 {
 
         @Override
         public void run() {
-            synchronized (strings) {
-                try {
-                    strings.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                synchronized (strings) {
+                    try {
+                        strings.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
 
 //                    for (int i = 0; i < 2; i++) {
 //                        count++;
-                try {
-                    Thread.sleep(800);
-                } catch (InterruptedException e) {
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
 //                            throw new RuntimeException(e);
-                    e.printStackTrace();
-                }
+                            e.printStackTrace();
+                        }
 //                        System.out.println("Значение счетчика: " + count);
 //                    }
 //                    count++;
 //                    System.out.println();
-                strings.notify();
+                    strings.notify();
+                }
             }
-        }
 
 //            synchronized (strings) {
 //                strings.notify();
 //            }
+        }
     }
-}
+
+
