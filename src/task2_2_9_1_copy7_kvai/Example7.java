@@ -1,4 +1,4 @@
-package task2_2_9_1_copy7_kvai7;
+package task2_2_9_1_copy7_kvai;
 
 import java.util.ArrayList;
 import java.util.Collections;

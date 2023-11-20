@@ -53,6 +53,7 @@ public class Example8 {
     static class MyThread4 implements Runnable {
         int count = 0;
 
+        @SuppressWarnings("BusyWait")
         @Override
         public void run() {
             while (count == 0) {
@@ -91,6 +92,12 @@ public class Example8 {
         public void run() {
 
             synchronized (strings) {
+                try {
+                    strings.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
                 // 5. 2.	Переопределить run() метод. Создать цикл for. В цикле распечатываем значения
                 // от 0 до 100 делящиеся на 10 без остатка.
                 System.out.println("5. Реализуем решение по Заданию 2. Создать класс реализующий Runnable. " +
@@ -120,43 +127,34 @@ public class Example8 {
 
 
     static class MyThread6 implements Runnable {
-        int count = 0;
 
+        @SuppressWarnings("BusyWait")
         @Override
         public void run() {
-            while (count == 0) {
 
-                synchronized (strings) {
+            synchronized (strings) {
+                try {
+                    strings.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                // 6. 3.	Используем статический метод Thread.sleep(), чтобы сделать паузу.
+                System.out.println("6. Реализуем решение по Заданию 2. Создать класс реализующий Runnable. " +
+                        "3. Используем статический метод Thread.sleep(), чтобы сделать паузу." +
+                        "\nДелаем паузу 800 миллисекунд между выводом на печать значений счетчика 1 и 2:");
+
+                for (int i = 0; i < 2; i++) {
                     try {
-                        strings.wait();
+                        Thread.sleep(800);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-
-                    // 6. 3.	Используем статический метод Thread.sleep(), чтобы сделать паузу.
-                    System.out.println("6. Реализуем решение по Заданию 2. Создать класс реализующий Runnable. " +
-                            "3. Используем статический метод Thread.sleep(), чтобы сделать паузу." +
-                            "\nДелаем паузу 800 миллисекунд между выводом на печать значений счетчика 1 и 2:");
-
-                    for (int i = 0; i < 2; i++) {
-                        count++;
-                        try {
-                            Thread.sleep(800);
-                        } catch (InterruptedException e) {
-//                            throw new RuntimeException(e);
-                            e.printStackTrace();
-                        }
-                        System.out.println("Значение счетчика: " + count);
-                    }
-//                    count++;
-                    System.out.println();
-                    strings.notify();
+                    System.out.println("Значение счетчика: " + /*count*/ (i + 1));
                 }
+                System.out.println();
+                strings.notify();
             }
-
-//            synchronized (strings) {
-//                strings.notify();
-//            }
         }
     }
 
@@ -217,33 +215,33 @@ public class Example8 {
 
         @Override
         public void run() {
-                synchronized (strings) {
-                    try {
-                        strings.wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+            synchronized (strings) {
+                try {
+                    strings.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
 //                    for (int i = 0; i < 2; i++) {
 //                        count++;
-                        try {
-                            Thread.sleep(500);
-                        } catch (InterruptedException e) {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
 //                            throw new RuntimeException(e);
-                            e.printStackTrace();
-                        }
+                    e.printStackTrace();
+                }
 //                        System.out.println("Значение счетчика: " + count);
 //                    }
 //                    count++;
 //                    System.out.println();
-                    strings.notify();
-                }
+                strings.notify();
             }
+        }
 
 //            synchronized (strings) {
 //                strings.notify();
 //            }
-        }
     }
+}
 
 
