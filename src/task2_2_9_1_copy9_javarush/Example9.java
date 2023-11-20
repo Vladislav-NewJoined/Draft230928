@@ -52,7 +52,7 @@ class MyThread6 implements Runnable {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                System.out.println("Значение счетчика: " + /*count*/ (i + 1));
+                System.out.println("Значение счетчика: " + (i + 1));
             }
             System.out.println();
             Example9.strings.notify();
