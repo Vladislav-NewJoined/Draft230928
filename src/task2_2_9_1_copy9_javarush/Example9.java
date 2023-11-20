@@ -10,11 +10,21 @@ public class Example9 {
     static final List<String> strings = Collections.synchronizedList(new ArrayList<>());
 
     public static void main(String[] args) {
-        Runnable task = () -> {
-            System.out.println("Task executed");
-        };
-        Thread thread = new Thread(task);
+//        Runnable task = () -> {
+////            System.out.println("Task executed");
+//            new Thread(new MyRunnable());
+//        };
+//        Thread thread = new Thread(task);
+        Thread thread = new Thread(new MyRunnable());
         thread.start();
+    }
+
+    static class MyRunnable implements Runnable {
+
+        @Override
+        public void run() {
+            System.out.println("Task executed");
+        }
     }
 }
 
