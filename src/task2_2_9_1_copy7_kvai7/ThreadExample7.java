@@ -1,4 +1,4 @@
-package task2_2_9_1_copy6_Example_kvai5_nextIterate;
+package task2_2_9_1_copy7_kvai7;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,7 +6,7 @@ import java.util.List;
 
 // источник: https://youtu.be/ns1imummWPw  Урок по Java 75: Многопоточность 10: Wait and Notify пример
 // отматываем назад от мин 10 38
-public class ThreadExample_NextIterate5 {
+public class ThreadExample7 {
     static final List<String> strings = Collections.synchronizedList(new ArrayList<>());
 
     public static void main(String[] args) throws InterruptedException {
@@ -26,10 +26,12 @@ public class ThreadExample_NextIterate5 {
 
                 Решение:\s""");
 
-//        new ThreadExample_NextIterate5.MyThread4().start();
-//        new ThreadExample_NextIterate5.MyThread7().start();
+//        new ThreadExample7.MyThread4().start();
+//        new ThreadExample7.MyThread7().start();
         Thread t4 = new Thread(new MyThread4());
         t4.start();
+        Thread t5 = new Thread(new MyThread5());
+        t5.start();
         Thread t7 = new Thread(new MyThread7());
         t7.start();
     }
@@ -68,7 +70,39 @@ public class ThreadExample_NextIterate5 {
         }
     }
 
-//    static class MyThread7 extends Thread {
+
+    static class MyThread5 implements Runnable {
+
+        @Override
+        public void run() {
+            synchronized (strings) {
+                // 5. 2.	Переопределить run() метод. Создать цикл for. В цикле распечатываем значения
+                // от 0 до 100 делящиеся на 10 без остатка.
+                System.out.println("4. Реализуем решение по Заданию 2. Создать класс реализующий Runnable. " +
+                        "2. Переопределить run() метод. Создать цикл for. В цикле распечатываем значения " +
+                        "от 0 до 100 делящиеся на 10 без остатка.");
+
+                for (int i = 0; i <= 100; i++) {
+                    try {
+                        Thread.sleep(70);
+                    } catch (InterruptedException e) {
+//                            throw new RuntimeException(e);
+                        e.printStackTrace();
+                    }
+                    if(i % 10 == 0) {
+                        System.out.println(i);
+                    }
+                }
+                System.out.println();
+            }
+
+        synchronized (strings) {
+            strings.notify();
+            }
+        }
+    }
+
+    //    static class MyThread7 extends Thread {
     static class MyThread7 implements Runnable {
         @Override
         public void run() {
