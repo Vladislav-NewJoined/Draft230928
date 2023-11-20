@@ -6,7 +6,7 @@ import java.util.List;
 
 // источник: https://youtu.be/ns1imummWPw  Урок по Java 75: Многопоточность 10: Wait and Notify пример
 // отматываем назад от мин 10 38
-public class ThreadExample7 {
+public class Example7 {
     static final List<String> strings = Collections.synchronizedList(new ArrayList<>());
 
     public static void main(String[] args) throws InterruptedException {
@@ -26,8 +26,8 @@ public class ThreadExample7 {
 
                 Решение:\s""");
 
-//        new ThreadExample7.MyThread4().start();
-//        new ThreadExample7.MyThread7().start();
+//        new Example7.MyThread4().start();
+//        new Example7.MyThread7().start();
         Thread t4 = new Thread(new MyThread4());
         t4.start();
 
@@ -89,8 +89,8 @@ public class ThreadExample7 {
 
         @Override
         public void run() {
-            synchronized (strings) {
 
+            synchronized (strings) {
                 // 5. 2.	Переопределить run() метод. Создать цикл for. В цикле распечатываем значения
                 // от 0 до 100 делящиеся на 10 без остатка.
                 System.out.println("5. Реализуем решение по Заданию 2. Создать класс реализующий Runnable. " +
@@ -109,11 +109,12 @@ public class ThreadExample7 {
                     }
                 }
                 System.out.println();
-            }
-
-            synchronized (strings) {
                 strings.notify();
             }
+//
+//            synchronized (strings) {
+//                strings.notify();
+//            }
         }
     }
 
@@ -147,14 +148,15 @@ public class ThreadExample7 {
                         }
                         System.out.println("Значение счетчика: " + count);
                     }
-                    count++;
+//                    count++;
                     System.out.println();
+                    strings.notify();
                 }
             }
 
-            synchronized (strings) {
-                strings.notify();
-            }
+//            synchronized (strings) {
+//                strings.notify();
+//            }
         }
     }
 
