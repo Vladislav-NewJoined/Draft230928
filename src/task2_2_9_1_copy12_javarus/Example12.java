@@ -39,7 +39,6 @@ public class Example12 {
     }
 
     static class T4 implements Runnable {
-
         @Override
         public void run() {
             try {
@@ -65,7 +64,6 @@ public class Example12 {
     }
 
     static class T5 implements Runnable {
-
         @Override
         public void run() {
             try {
@@ -93,7 +91,6 @@ public class Example12 {
     }
 
     static class T6 implements Runnable {
-
         @Override
         public void run() {
             try {
@@ -120,7 +117,6 @@ public class Example12 {
     }
 
     static class T7 implements Runnable {
-
         @Override
         public void run() {
             try {
