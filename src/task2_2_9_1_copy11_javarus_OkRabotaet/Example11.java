@@ -1,29 +1,6 @@
 package task2_2_9_1_copy11_javarus_OkRabotaet;
 
-
 // источник: https://stackoverflow-com.translate.goog/questions/15997483/how-to-ensure-java-threads-run-in-a-particular-order?_x_tr_sl=en&_x_tr_tl=ru&_x_tr_hl=ru
-public class Example11 {
-    public static void main(String[] args) {
-
-        Thread a = new Thread(new A());
-        Thread b = new Thread(new B());
-        Thread c = new Thread(new C());
-        Thread d = new Thread(new D());
-
-        a.start();
-        try {
-            a.join();
-            b.start();
-            b.join();
-            c.start();
-            c.join();
-            d.start();
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-}
 class A implements Runnable {
 
     @Override
@@ -145,6 +122,30 @@ class D implements Runnable {
             }
         }
         System.exit(0);
+    }
+}
+
+// источник: https://stackoverflow-com.translate.goog/questions/15997483/how-to-ensure-java-threads-run-in-a-particular-order?_x_tr_sl=en&_x_tr_tl=ru&_x_tr_hl=ru
+public class Example11 {
+    public static void main(String[] args) {
+
+        Thread a = new Thread(new A());
+        Thread b = new Thread(new B());
+        Thread c = new Thread(new C());
+        Thread d = new Thread(new D());
+
+        a.start();
+        try {
+            a.join();
+            b.start();
+            b.join();
+            c.start();
+            c.join();
+            d.start();
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
 
