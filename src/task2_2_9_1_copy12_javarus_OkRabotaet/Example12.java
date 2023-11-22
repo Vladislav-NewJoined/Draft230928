@@ -1,31 +1,40 @@
-package task2_2_9_1_copy12_javarus;
+package task2_2_9_1_copy12_javarus_OkRabotaet;
 
 // источник: https://stackoverflow-com.translate.goog/questions/15997483/how-to-ensure-java-threads-run-in-a-particular-order?_x_tr_sl=en&_x_tr_tl=ru&_x_tr_hl=ru
 public class Example12 {
     public static void main(String[] args) {
         System.out.println("""
-            Задание:\s
-            Модуль 2. Тема 2. Урок 9. Многопоточность.
-                Задание:
-                  1. Создать класс расширяющий Thread
-                  1.	Создать класс NewThread расширяющий Thread.
-                  2.	Переопределить метод run(). В цикле for вывести на консоль символ 100 раз.
-                  3.	Создать экземпляр класса и запустить новый поток.
-                  2. Создать класс реализующий Runnable
-                  1.	Создать класс, реализующий интерфейс Runnable.
-                  2.	Переопределить run() метод. Создать цикл for. В цикле распечатываем значения от 0 до 100 делящиеся на 10 без остатка.
-                  3.	Используем статический метод Thread.sleep(), чтобы сделать паузу.
-                  4.	Создать три потока, выполняющих задачу распечатки значений.
+                Задание:\s
+                Модуль 2. Тема 2. Урок 9. Многопоточность.
+                    Задание:
+                      1. Создать класс расширяющий Thread
+                      1.	Создать класс NewThread расширяющий Thread.
+                      2.	Переопределить метод run(). В цикле for вывести на консоль символ 100 раз.
+                      3.	Создать экземпляр класса и запустить новый поток.
+                      2. Создать класс реализующий Runnable
+                      1.	Создать класс, реализующий интерфейс Runnable.
+                      2.	Переопределить run() метод. Создать цикл for. В цикле распечатываем значения от 0 до 100 делящиеся на 10 без остатка.
+                      3.	Используем статический метод Thread.sleep(), чтобы сделать паузу.
+                      4.	Создать три потока, выполняющих задачу распечатки значений.
 
-            Решение:\s""");
+                Решение:\s""");
 
+        Thread t1 = new Thread(new T1());
+        Thread t2 = new Thread(new T2());
+        Thread t3 = new Thread(new T3());
         Thread t4 = new Thread(new T4());
         Thread t5 = new Thread(new T5());
         Thread t6 = new Thread(new T6());
         Thread t7 = new Thread(new T7());
 
-        t4.start();
+        t1.start();
         try {
+            t1.join();
+            t2.start();
+            t2.join();
+            t3.start();
+            t3.join();
+            t4.start();
             t4.join();
             t5.start();
             t5.join();
@@ -35,6 +44,104 @@ public class Example12 {
 
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    static class T1 extends Thread {
+        @Override
+        public void run() {
+            super.run();
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("""
+                    1. Реализуем решение по Заданию 1. Создать класс расширяющий Thread.
+                    1. Создать класс NewThread расширяющий Thread.
+                    Реализовано c помощью оператора getName().""");
+
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            System.out.println(getName());
+            System.out.println();
+        }
+    }
+
+    static class T2 extends Thread {
+        @Override
+        public void run() {
+            super.run();
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("""
+                    2. Реализуем решение по Заданию 1. Создать класс расширяющий Thread.
+                    2.	Переопределить метод run(). В цикле for вывести на консоль
+                    символ 100 раз.""");
+
+            for (int i = 0; i < 100; i++) {
+                try {
+                    Thread.sleep(25);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("№: " + i + " раз");
+            }
+            System.out.println();
+        }
+    }
+
+    static class T3 extends Thread {
+        @Override
+        public void run() {
+            super.run();
+            System.out.println("""
+                    3. Реализуем решение по Заданию 1. Создать класс расширяющий Thread.
+                    3.	Создать экземпляр класса и запустить новый поток.""");
+
+            System.out.println("СПОСОБ 1:");
+            System.out.println("Main thread started (Способ 1)...");
+            for (int i = 0; i < 3; i++) {
+                Thread t = new Thread(new MyThreadLogic());
+                t.start();
+                try {
+                    Thread.sleep(300);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            System.out.println("Main thread finished (Способ 1)...");
+            System.out.println();
+
+            System.out.println("СПОСОБ 2:");
+            System.out.println("Main thread started (Способ 2)...");
+            for (int i = 0; i < 3; i++) {
+                Thread t2 = new Thread(() -> {
+                    System.out.println("Способ 2");
+                }, "Thread");
+                t2.start();
+                try {
+                    Thread.sleep(300);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            System.out.println("Main thread finished (Способ 2)...");
+            System.out.println();
+        }
+    }
+
+    static class MyThreadLogic implements Runnable {
+        @Override
+        public void run() {
+            System.out.println("Способ 1");
         }
     }
 

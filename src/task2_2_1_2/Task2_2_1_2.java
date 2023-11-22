@@ -1,4 +1,3 @@
-// видеоурок прервался на мин 22 40
 package task2_2_1_2;
 
 public class Task2_2_1_2 {

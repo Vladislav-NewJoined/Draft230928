@@ -11,7 +11,7 @@ public class Task2_2_1_3 {
 
         System.out.println("СПОСОБ 1:");
         System.out.println("Main thread started (Способ 1)...");
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
             Thread t = new Thread(new MyThreadLogic());
             t.start();
             Thread.sleep(300);
@@ -21,7 +21,7 @@ public class Task2_2_1_3 {
 
         System.out.println("СПОСОБ 2:");
         System.out.println("Main thread started (Способ 2)...");
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
             Thread t2 = new Thread(() -> {
                 System.out.println("Способ 2");
             },"Thread");
