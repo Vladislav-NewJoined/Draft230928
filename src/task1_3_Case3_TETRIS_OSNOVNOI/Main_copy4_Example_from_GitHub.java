@@ -86,11 +86,11 @@ class Tetris extends JPanel {
     private int rotation;
     private ArrayList<Integer> nextPieces = new ArrayList<Integer>();
 
-    private long score;
+    public long score;
     private Color[][] well;
 
     // Creates a border around the well and initializes the dropping piece
-    private void init() {
+    public void init() {
         well = new Color[12][24];
         for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 23; j++) {
