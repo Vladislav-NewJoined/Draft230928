@@ -10,26 +10,24 @@ import java.nio.file.Paths;
 // Давайте напишем заново
 
 public class ITunesMoviePlayer {
-    void playSong(String searchRequest) throws IOException {
-        playSongInternal(searchRequest, 1);
-    }
-    // конец источника: https://www.javatpoint.com/how-to-open-a-file-in-java
+//    // источник: https://www.javatpoint.com/how-to-open-a-file-in-java
+//    void playMovie(String searchRequest) throws IOException {
+//        playSongInternal(searchRequest, 1);
+//    }
+//    // конец источника: https://www.javatpoint.com/how-to-open-a-file-in-java
 
-    void playSong(String searchRequest, int limit) throws IOException {
-        playSongInternal(searchRequest, limit);
-    }
-
-    private void playSongInternal(String searchRequest, int limit) throws IOException {
-        String url = buildUrl(searchRequest, limit);
+    void playMovie(String searchRequest) throws IOException {
+        String url = buildUrl(searchRequest);
+        System.out.println("Will search film by term: " + searchRequest);
         String page = downloadWebPage(url);
 
-        String artistName = getTag(page, "artistName");
-        String trackName = getTag(page, "trackName");
+        String movieName = getTag(page, "trackName");
         String previewUrl = getTag(page, "previewUrl");
-//        System.out.println(page);
-        System.out.println(artistName + " - " + trackName);
+        String fileExtension = previewUrl.substring(previewUrl.length()-3);
+        String fileName = movieName + "." + fileExtension;
+        System.out.println("Will download " + movieName);
         try (InputStream in = new URL(previewUrl).openStream()) {
-            Files.copy(in, Paths.get(trackName + ".m4a"));
+            Files.copy(in, Paths.get(fileName));
         }
         System.out.println("Downloaded!");
 
@@ -41,7 +39,7 @@ public class ITunesMoviePlayer {
         }
 
         Desktop desktop = Desktop.getDesktop();
-        File file = new File(trackName + ".m4a");
+        File file = new File(fileName);
         desktop.open(file); //opens the specified file
     }
 
@@ -53,11 +51,12 @@ public class ITunesMoviePlayer {
         return value;
     }
 
-    private String buildUrl(String searchRequest, int limit) {
+    private String buildUrl(String searchRequest) {
+        int limit = 50;
         String term = searchRequest.replaceAll(" ", "+");
         String itunesApi = "https://itunes.apple.com/search?term=";
         String limitParam = "&limit=1" + limit;
-        String mediaParam = "&media=music";
+        String mediaParam = "&media=movie";
         StringBuilder builder = new StringBuilder();
         builder.append(itunesApi);
         builder.append(term);
