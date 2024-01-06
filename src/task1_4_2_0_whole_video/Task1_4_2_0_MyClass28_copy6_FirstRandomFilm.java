@@ -11,7 +11,7 @@ public class Task1_4_2_0_MyClass28_copy6_FirstRandomFilm {
     //    то есть - то же самое, как если сделать метод init, только чуть короче
 
     public static void main(String[] args) throws IOException {
-        RandomMoviePicker5 moviePicker = new RandomMoviePicker5();
+        RandomMoviePicker4 moviePicker = new RandomMoviePicker4();
         String[] movies = moviePicker.getRandomMovieNames();
 //        System.out.println(Arrays.toString(movies));
 //        System.out.println(/*Arrays.toString(movies)*/movies);
