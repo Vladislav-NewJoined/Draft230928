@@ -17,10 +17,13 @@ public class Task1_4_2_0_MyClass28_copy3 {
 class RandomMoviePicker {
     PageDownloader downloader = new PageDownloader();
 
-    String[] getRandomMovieNames() {
+    void getRandomMovieNames() {
         String url = "https://randommer.io/random-movies";
         String page = downloader.downloadWebPage(url);
-        System.out.println(page);
-        return new String[0];
+        int captionIndex = page.indexOf("<div class=\"caption\"");
+        int startIndex = captionIndex + 52;
+        int endIndex = page.indexOf("</div>", startIndex) - 28;
+        System.out.println(page.substring(startIndex, endIndex));
+//        int pIndex = page.indexOf();
     }
 }
