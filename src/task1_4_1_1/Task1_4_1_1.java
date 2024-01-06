@@ -10,8 +10,10 @@ public class Task1_4_1_1 {
             Решение:\s""");
 
         Task1_4_1_1_DirectoryAndFileExtended data = new Task1_4_1_1_DirectoryAndFileExtended();
-        data.directory = "directory_For_testFile";
-        data.file = "directory_For_testFile/testFile.txt";
+//        data.directory = "directory_For_testFile";
+        data.directory = "src/task1_4_1_1/directory_For_testFile";
+//        data.file = "directory_For_testFile/testFile.txt";
+        data.file = "src/task1_4_1_1/directory_For_testFile/testFile.txt";
 
         data.printDirectory();
         data.printFile();
