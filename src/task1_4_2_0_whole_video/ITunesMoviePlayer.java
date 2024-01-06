@@ -16,10 +16,12 @@ public class ITunesMoviePlayer {
 //    }
 //    // конец источника: https://www.javatpoint.com/how-to-open-a-file-in-java
 
+    PageDownloader downloader = new PageDownloader();
+
     void playMovie(String searchRequest) throws IOException {
         String url = buildUrl(searchRequest);
         System.out.println("Will search film by term: " + searchRequest);
-        String page = downloadWebPage(url);
+        String page = downloader.downloadWebPage(url);
 
         String movieName = getTag(page, "trackName");
         String previewUrl = getTag(page, "previewUrl");
