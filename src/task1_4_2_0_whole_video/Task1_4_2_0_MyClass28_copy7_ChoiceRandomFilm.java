@@ -1,9 +1,10 @@
 package task1_4_2_0_whole_video;
 
 import java.io.IOException;
+import java.util.Scanner;
 
-// проверка: успешно работает! мин 53 32 видеоурок Модуль1 Тема4 Урок 2. Конструкторы
-// прервался на мин 53 32 видеоурок Модуль1 Тема4 Урок 2. Конструкторы
+// проверка: успешно работает! мин 56 05 видеоурок Модуль1 Тема4 Урок 2. Конструкторы
+// прервался на мин 56 05 видеоурок Модуль1 Тема4 Урок 2. Конструкторы
 
 public class Task1_4_2_0_MyClass28_copy7_ChoiceRandomFilm {
     // 1. Конструктор - это просто метод, разница в том, что вызывается он через new <ИмяКласса>(..,)
@@ -17,10 +18,14 @@ public class Task1_4_2_0_MyClass28_copy7_ChoiceRandomFilm {
 //        System.out.println(/*Arrays.toString(movies)*/movies);
         for (int i=0; i<movies.length; i++) {
             int number = i+1;
-            System.out.println(number + ": " + movies[i].name + " (" + movies[i].year + ")");
+            System.out.println(number + ": " + movies[i].name + "(" + movies[i].year + ")");
         }
-//        ITunesMoviePlayer player = new ITunesMoviePlayer();
-//        player.playMovie(movies[0]);
+        System.out.print("Film number: ");
+        Scanner scanner = new Scanner(System.in);
+        int chosenNumber = scanner.nextInt();
+        int chosenIndex = chosenNumber - 1;
+        ITunesMoviePlayer player = new ITunesMoviePlayer();
+        player.playMovie(movies[chosenIndex].name);
     }
 }
 
