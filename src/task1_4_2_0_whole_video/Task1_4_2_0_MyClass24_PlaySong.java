@@ -3,7 +3,7 @@ package task1_4_2_0_whole_video;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Task1_4_2_0_MyClass24 {
+public class Task1_4_2_0_MyClass24_PlaySong {
     public static void main(String[] args) throws IOException {
         ITunesMusicPlayer player = new ITunesMusicPlayer();
         Scanner scanner = new Scanner(System.in);
