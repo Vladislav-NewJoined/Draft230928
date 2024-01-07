@@ -1,4 +1,6 @@
-package task1_4_2_0_whole_video;
+package a_shablony;
+
+import task1_4_2_0_whole_video.PageDownloader;
 
 import java.awt.*;
 import java.io.*;

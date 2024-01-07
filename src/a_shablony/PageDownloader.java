@@ -1,4 +1,4 @@
-package task1_4_2_0_whole_video;
+package a_shablony;
 
 import java.io.BufferedReader;
 import java.io.IOException;
