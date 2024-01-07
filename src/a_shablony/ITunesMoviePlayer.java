@@ -1,6 +1,6 @@
 package a_shablony;
 
-import task1_4_2_0_whole_video.PageDownloader;
+//import task1_4_2_0_whole_video.PageDownloader;
 
 import java.awt.*;
 import java.io.*;
@@ -8,8 +8,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
-// Давайте напишем заново
 
 public class ITunesMoviePlayer {
 //    // источник: https://www.javatpoint.com/how-to-open-a-file-in-java
